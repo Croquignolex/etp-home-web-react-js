@@ -4,7 +4,6 @@ import moment from 'moment';
 
 import mp3ErrorFile from "../assets/audio/error.mp3";
 import mp3WarningFile from "../assets/audio/warning.mp3";
-import mp3SuccessFile from "../assets/audio/success.mp3";
 import {
     DONE,
     ADMIN,
@@ -91,15 +90,6 @@ axios.interceptors.request.use(config => {
     config.headers.Authorization = 'Bearer ' + getLocaleStorageItem(LOCAL_STORAGE_USER_TOKEN);
     return config;
 }, error => Promise.reject(error));
-
-//
-export function playSuccessSound() {
-    const successSound = new UIfx(mp3SuccessFile, {volume: 1.0, throttleMs: 100});
-    try {
-        const canPlay = getLocaleStorageItem(LOCAL_STORAGE_USER_SETTING).sound;
-        canPlay && successSound.play();
-    } catch (e) {if(process.env.NODE_ENV !== 'production') console.log({e})}
-}
 
 //
 export function playWarningSound() {

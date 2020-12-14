@@ -5,7 +5,6 @@ import {storeSetDangerErrorData} from "../errors/actions";
 import {
     apiGetRequest,
     apiPostRequest,
-    playSuccessSound,
     sortByCreationDate,
     getLocaleStorageItem,
     setLocaleStorageItem
@@ -64,55 +63,6 @@ export function* emitNotificationsFetch() {
         } catch (message) {
             // Fire event for request
             yield put(storeRequestFailed({scope}));
-            yield put(storeSetDangerErrorData({message, scope}));
-        }
-    });
-}
-
-// Fetch unread notifications from API
-export function* emitUnreadNotificationsFetch() {
-    yield takeLatest(EMIT_UNREAD_NOTIFICATIONS_FETCH, function*() {
-        const scope = UNREAD_NOTIFICATIONS_SCOPE;
-        try {
-            // Fire event for request
-            // yield put(storeRequestInit({scope}));
-            const apiResponse = yield call(apiGetRequest, UNREAD_NOTIFICATIONS_API_PATH);
-            const notifications = extractNotificationsData(apiResponse.notifications);
-            const currentNotifications = notifications.length;
-            // Notification sound
-            const receivedNotifications = yield call(getLocaleStorageItem, LOCAL_STORAGE_USER_RECEIVED_NOTIFICATIONS);
-            if(receivedNotifications != null && receivedNotifications) {
-                if(currentNotifications > receivedNotifications) {
-                    playSuccessSound()
-                    // Only show desktop notification if focus is lost
-                    let hidden;
-                    if (typeof document.hidden !== "undefined") hidden = "hidden";
-                    else if (typeof document.msHidden !== "undefined") hidden = "msHidden";
-                    else if (typeof document.webkitHidden !== "undefined") hidden = "webkitHidden";
-                    // Show desktop notification & focus on tab after user click on the notification
-                    if (document[hidden]) {
-                        if (Notification.permission === "granted") {
-                            const options = {
-                                body: notifications[0].message,
-                                icon: `${BASE_URL}/logo-square.png`
-                            };
-                            const notification = new Notification("Notification MMAC", options);
-                            notification.onclick = (e)  => {
-                                window.open(`${BASE_URL}${notifications[0].url}`);
-                            };
-                        }
-                   }
-                }
-            }
-            // Keep data
-            yield call(setLocaleStorageItem, LOCAL_STORAGE_USER_RECEIVED_NOTIFICATIONS, currentNotifications);
-            // Fire event to redux
-            yield put(storeSetUnreadNotificationsData({notifications}));
-            // Fire event for request
-            // yield put(storeRequestSucceed({scope}));
-        } catch (message) {
-            // Fire event for request
-            // yield put(storeRequestFailed({scope}));
             yield put(storeSetDangerErrorData({message, scope}));
         }
     });
@@ -219,6 +169,5 @@ export default function* sagaNotifications() {
         fork(emitNotificationRead),
         fork(emitNotificationsFetch),
         fork(emitNotificationDelete),
-        fork(emitUnreadNotificationsFetch),
     ]);
 }
