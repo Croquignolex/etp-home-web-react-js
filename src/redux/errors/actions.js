@@ -9,7 +9,7 @@ export const storeResetErrorData = () => ({
 });
 
 // Set error data in store
-export const storeSetDangerErrorData = ({message}) => ({
+export const storeSetErrorData = ({message}) => ({
     message,
     type: STORE_SET_ERROR_DATA
 });

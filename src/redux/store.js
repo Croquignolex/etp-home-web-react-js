@@ -6,7 +6,6 @@ import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
 
 import sagas from '../redux/sagas';
 import reducers from '../redux/reducers';
-import { emitCheckUserAuthentication } from "./user/actions";
 
 // Fetch all middleware
 const history = createBrowserHistory();
@@ -33,8 +32,5 @@ const store = createStore(
 
 // Run saga middleware
 sagaMiddleware.run(sagas);
-
-// Init global store
-// store.dispatch(emitCheckUserAuthentication());
 
 export { store, history };

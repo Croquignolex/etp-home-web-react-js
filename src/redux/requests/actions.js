@@ -1,7 +1,6 @@
 // Reducer action types
 export const STORE_REQUEST_INIT = 'STORE_REQUEST_INIT';
 export const STORE_REQUEST_FAILED = 'STORE_REQUEST_FAILED';
-export const STORE_REQUEST_SUCCEEDED = 'STORE_REQUEST_SUCCEEDED';
 
 //====================== Reducer trigger actions
 // Set init data into store
@@ -13,9 +12,3 @@ export const storeRequestInit = () => ({
 export const storeRequestFailed = () => ({
     type: STORE_REQUEST_FAILED
 });
-
-// Set succeeded data into store
-export const storeRequestSucceed = () => ({
-    type: STORE_REQUEST_SUCCEEDED
-});
-

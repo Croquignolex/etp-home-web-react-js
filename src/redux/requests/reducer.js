@@ -1,4 +1,4 @@
-import {STORE_REQUEST_INIT, STORE_REQUEST_FAILED, STORE_REQUEST_SUCCEEDED} from "./actions";
+import {STORE_REQUEST_INIT, STORE_REQUEST_FAILED} from "./actions";
 
 // Partial global store for requests data management
 const initialState = {
@@ -17,10 +17,6 @@ function reduce(state = initialState, action) {
         // Resolve event to set failed request store data
         case STORE_REQUEST_FAILED:
             nextState = {...state, failed: true, loading: false};
-            return nextState || state;
-        // Resolve event to set succeeded request store data
-        case STORE_REQUEST_SUCCEEDED:
-            nextState = {...state, failed: false, loading: false};
             return nextState || state;
         // Unknown action
         default: return state;
