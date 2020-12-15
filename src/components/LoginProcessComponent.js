@@ -9,15 +9,14 @@ import {emitAttemptUserIdentification} from "../redux/user/actions";
 function LoginProcessComponent({requests, dispatch, handleIdentified}) {
     // Local state
     const [phone, setPhone] = useState('');
-    const [loader, setLoader] = useState(false);
 
     // local effects
     useEffect(() => {
         // Identified user if phone number check is successful
-        if(requests.succeeded) {
+        if(requestSucceeded(requests)) {
             handleIdentified(true, phone)
         }
-    }, [requests.succeeded]);
+    }, [requests]);
 
     // Handle phone input
     const handleInput = (data) => {
@@ -25,7 +24,6 @@ function LoginProcessComponent({requests, dispatch, handleIdentified}) {
 
         if(data.length === 9) {
             setPhone(data);
-            setLoader(true);
             dispatch(emitAttemptUserIdentification({data}));
         }
     }
@@ -33,10 +31,28 @@ function LoginProcessComponent({requests, dispatch, handleIdentified}) {
     // Render
     return (
         <>
-            <FormInputComponent inputType="text" inputEnable={!loader} handleInput={handleInput} />
-            {loader && <img width={70} alt='loading...' src={require('../assets/images/spinner-theme.svg')} />}
+            <FormInputComponent inputType="text" inputEnable={!requestLoading(requests)} handleInput={handleInput} />
+            {requestLoading(requests) && <img width={70} alt='loading...' src={require('../assets/images/spinner-theme.svg')} />}
         </>
     )
+}
+
+// Check if request has succeeded
+function requestSucceeded(requests) {
+    const {failed, loading, succeeded} = requests
+    return succeeded && !failed && !loading;
+}
+
+// Check if request has failed
+function requestFailed(requests) {
+    const {failed, loading, succeeded} = requests
+    return !succeeded && failed && !loading;
+}
+
+// Check if request is in loading
+function requestLoading(requests) {
+    const {failed, loading, succeeded} = requests
+    return !succeeded && !failed && loading;
 }
 
 // Prop types to ensure destroyed props data type
