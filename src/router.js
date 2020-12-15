@@ -2,8 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 
-import asyncComponent from './helpers/asyncComponent';
-import PublicRoute from "./components/router/PublicRoute";
+import asyncComponent from './components/asyncComponent';
 
 // Component
 function AppRoutes({history}) {
@@ -11,13 +10,13 @@ function AppRoutes({history}) {
         <ConnectedRouter history={history}>
             <Switch>
                 {/* Available pages on guest mode */}
-                <PublicRoute
+                <Route
                     exact
                     path="/"
                     component={asyncComponent(() => import('./containers/LoginContainer'))}
                 />
                 {/* 404 page */}
-                <Route component={asyncComponent(() => import('./pages/error/NotFoundPage'))} />
+                <Route component={asyncComponent(() => import('./pages/NotFoundPage'))} />
             </Switch>
         </ConnectedRouter>
     );
