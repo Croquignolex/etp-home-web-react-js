@@ -6,23 +6,22 @@ import ErrorAlert from "../components/ErrorAlert";
 import {storeResetErrorData} from "../redux/errors/actions";
 
 // Component
-function LoginPage({errors, requests, user, dispatch}) {
+function LoginPage({errors, requests, dispatch}) {
     // Local state
-    const [phone, setPhone] = useState({isValid: true, message: '', val: ''});
+    const [inputEnable, setInputEnable] = useState(true);
 
+    // local effects
     useEffect(() => {
         document.title = "Identification - MMAC";
     }, []);
 
-    // reset error data from store
-    const shouldResetErrorData = () => {
-        dispatch(storeResetErrorData());
-    }
-
     // Handle phone input
-    const handlePhoneInput = (isValid, val) => {
-        shouldResetErrorData();
-        setPhone({...phone, isValid, val});
+    const handlePhoneInput = (phone) => {
+        dispatch(storeResetErrorData());
+
+        if(phone.length === 9) {
+            setInputEnable(false);
+        }
     }
 
     // Trigger login form submit
@@ -48,19 +47,25 @@ function LoginPage({errors, requests, user, dispatch}) {
     return (
         <div className="auth-home">
             <div className="login-box">
+                {/* Logo */}
                 <div className="login-logo">
                     <span><img alt="..." width="100" src={require('../assets/images/logo.png')} /></span>
                 </div>
                 <div className="card no-shadow">
                     <div className="card-body login-card-body">
+                        {/* Error message */}
                         {errors.show && <ErrorAlert message={errors.message} />}
-                        <form name="form">
-                            <FormInput type='number'
-                                   input={phone}
-                                   icon='fas fa-phone'
-                                   label='Numéro de téléphone'
-                                   handleInput={handlePhoneInput}
-                            />
+                        {/* Identification form */}
+                        <form name="form" className="text-center">
+                            {/* Input */}
+                            <FormInput inputEnable={inputEnable} handleInput={handlePhoneInput} />
+                            {/* loader */}
+                            {!inputEnable && (
+                                <img width={70}
+                                     alt='loading...'
+                                     src={require('../assets/images/spinner-theme.svg')}
+                                />
+                            )}
                         </form>
                     </div>
                 </div>
@@ -78,7 +83,6 @@ function LoginPage({errors, requests, user, dispatch}) {
 
 // Prop types to ensure destroyed props data type
 LoginPage.propTypes = {
-    user: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
     requests: PropTypes.object.isRequired
