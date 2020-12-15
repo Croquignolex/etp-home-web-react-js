@@ -1,12 +1,7 @@
 import { all, takeLatest, put, fork, call } from 'redux-saga/effects'
 
-import {apiGetRequest} from "../../helpers/functions";
-import {storeSetDangerErrorData} from "../errors/actions";
-import {EMIT_ROLES_FETCH, storeSetRolesData} from './actions'
-import {AGENT, COLLECTOR, ROLES_API_PATH, ROLES_SCOPE} from "../../helpers/constants";
-import {storeRequestInit, storeRequestFailed, storeRequestSucceed} from "../requests/actions";
 
-// Fetch users roles from API
+/*// Fetch users roles from API
 export function* emitRolesFetch() {
     yield takeLatest(EMIT_ROLES_FETCH, function*() {
         const scope = ROLES_SCOPE;
@@ -37,11 +32,11 @@ function extractRolesData(apiRoles) {
         });
     }
     return roles;
-}
+}*/
 
 // Combine to export all functions at once
 export default function* sagaRoles() {
     yield all([
-        fork(emitRolesFetch)
+        // fork(emitRolesFetch)
     ]);
 }

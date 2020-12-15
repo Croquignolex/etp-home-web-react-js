@@ -2,6 +2,8 @@ import PropTypes from "prop-types";
 import React, {useEffect, useState} from 'react';
 
 import FormInput from "../components/FormInput";
+import ErrorAlert from "../components/ErrorAlert";
+import {storeResetErrorData} from "../redux/errors/actions";
 
 // Component
 function LoginPage({errors, requests, user, dispatch}) {
@@ -12,8 +14,14 @@ function LoginPage({errors, requests, user, dispatch}) {
         document.title = "Identification - MMAC";
     }, []);
 
+    // reset error data from store
+    const shouldResetErrorData = () => {
+        dispatch(storeResetErrorData());
+    }
+
+    // Handle phone input
     const handlePhoneInput = (isValid, val) => {
-        // shouldResetErrorData();
+        shouldResetErrorData();
         setPhone({...phone, isValid, val});
     }
 
@@ -45,12 +53,7 @@ function LoginPage({errors, requests, user, dispatch}) {
                 </div>
                 <div className="card no-shadow">
                     <div className="card-body login-card-body">
-                        {/*{shouldShowError(scope, errors.list) &&
-                            <ErrorAlert scope={scope} />
-                        }*/}
-                        {errors.show &&
-                            <ErrorAlert scope={scope} />
-                        }
+                        {errors.show && <ErrorAlert message={errors.message} />}
                         <form name="form">
                             <FormInput type='number'
                                    input={phone}

@@ -1,58 +1,6 @@
 import { all, takeLatest, put, fork, call } from 'redux-saga/effects'
 
-import {storeSetDangerErrorData} from "../errors/actions";
-import {
-    storeRequestInit,
-    storeRequestFailed,
-    storeRequestSucceed
-} from "../requests/actions";
-import {
-    apiGetRequest,
-    apiPostRequest,
-    getImageFromServer,
-    setLocaleStorageItem,
-} from "../../helpers/functions";
-import {
-    EMIT_USER_BALANCE,
-    storeSetUserBalance,
-    storeSetUserFullData,
-    EMIT_ATTEMPT_USER_AUTHENTICATION
-} from './actions'
-import {
-    AGENT_ROLE,
-    AGENT_SCOPE,
-    LOGIN_SCOPE,
-    PROFILE_SCOPE,
-    LOGIN_API_PATH,
-    BALANCE_API_PATH,
-    USER_BALANCE_SCOPE,
-    COLLECTOR_AGENT_ROLE,
-    LOCAL_STORAGE_USER_ID,
-    LOCAL_STORAGE_USER_ZONE,
-    LOCAL_STORAGE_USER_NAME,
-    LOCAL_STORAGE_USER_POST,
-    LOCAL_STORAGE_USER_ROLE,
-    LOCAL_STORAGE_USER_SIMS,
-    LOCAL_STORAGE_USER_TOWN,
-    LOCAL_STORAGE_USER_EMAIL,
-    LOCAL_STORAGE_USER_PHONE,
-    LOCAL_STORAGE_USER_TOKEN,
-    LOCAL_STORAGE_USER_AVATAR,
-    LOCAL_STORAGE_USER_ADDRESS,
-    LOCAL_STORAGE_USER_COUNTRY,
-    LOCAL_STORAGE_USER_BALANCE,
-    LOCAL_STORAGE_USER_SETTING,
-    LOCAL_STORAGE_USER_REFERENCE,
-    LOCAL_STORAGE_USER_SALE_POINT,
-    LOCAL_STORAGE_USER_COMMISSION,
-    LOCAL_STORAGE_USER_DESCRIPTION,
-    LOCAL_STORAGE_USER_BACK_ID_CARD,
-    LOCAL_STORAGE_USER_CREATION_DATE,
-    LOCAL_STORAGE_USER_FRONT_ID_CARD,
-    LOCAL_STORAGE_USER_AUTHENTICATION,
-} from "../../helpers/constants";
-
-// Attempt user authentication from API
+/*// Attempt user authentication from API
 export function* emitAttemptUserAuthentication() {
     yield takeLatest(EMIT_ATTEMPT_USER_AUTHENTICATION, function*({phone, password}) {
         const scope = LOGIN_SCOPE;
@@ -209,12 +157,12 @@ export function* emitUserBalance() {
             yield put(storeSetDangerErrorData({message, scope}));
         }
     });
-}
+}*/
 
 // Combine to export all functions at once
 export default function* sagaUser() {
     yield all([
-        fork(emitUserBalance),
-        fork(emitAttemptUserAuthentication),
+        /*fork(emitUserBalance),
+        fork(emitAttemptUserAuthentication),*/
     ]);
 }

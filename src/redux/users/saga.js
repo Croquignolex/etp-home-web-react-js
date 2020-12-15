@@ -1,34 +1,7 @@
 import { all, takeLatest, put, fork, call } from 'redux-saga/effects'
 
-import {storeSetDangerErrorData} from "../errors/actions";
-import {
-    storeRequestInit,
-    storeRequestFailed,
-    storeRequestSucceed
-} from "../requests/actions";
-import {
-    apiGetRequest,
-    getImageFromServer,
-    sortByCreationDate
-} from "../../helpers/functions";
-import {
-    EMIT_USER_FETCH,
-    storeSetUserData,
-    EMIT_USERS_FETCH,
-    storeSetUsersData,
-} from './actions'
-import {
-    AGENT,
-    APPROVE,
-    COLLECTOR,
-    USER_SCOPE,
-    USERS_SCOPE,
-    PROFILE_SCOPE,
-    USERS_API_PATH,
-    USERS_DETAILS_API_PATH,
-} from "../../helpers/constants";
 
-// Fetch users from API
+/*// Fetch users from API
 export function* emitUsersFetch() {
     yield takeLatest(EMIT_USERS_FETCH, function*() {
         const scope = USERS_SCOPE;
@@ -120,12 +93,12 @@ function extractUsersData(apiUsers) {
     }
     sortByCreationDate(users);
     return users;
-}
+}*/
 
 // Combine to export all functions at once
 export default function* sagaUsers() {
     yield all([
-        fork(emitUserFetch),
-        fork(emitUsersFetch),
+        // fork(emitUserFetch),
+        // fork(emitUsersFetch),
     ]);
 }
