@@ -4,7 +4,7 @@ import { all, takeLatest, put, fork, call } from 'redux-saga/effects'
 import {storeSetErrorData} from "../errors/actions";
 import {EMIT_ATTEMPT_USER_IDENTIFICATION} from "./actions";
 import {API_SERVER_URL} from "../../constants/defaultConstants";
-import {storeRequestInit, storeRequestFailed} from "../requests/actions";
+import {storeRequestInit, storeRequestFailed, storeRequestSucceeded} from "../requests/actions";
 
 // Attempt user authentication from API
 export function* emitAttemptUserIdentification() {
@@ -14,11 +14,14 @@ export function* emitAttemptUserIdentification() {
             yield put(storeRequestInit());
             // API call
             const apiResponse = yield call(apiPostRequest, `${API_SERVER_URL}/identification`, {phone});
+            const {identified, message} = apiResponse;
 
-            const roleData = apiResponse.role;
-            console.log("API repose.role ======> ", roleData)
-            // TODO: redirzect from the corerzct rolze
-
+            if(identified) yield put(storeRequestSucceeded());
+            else {
+                // Error message displayed
+                yield put(storeRequestFailed());
+                yield put(storeSetErrorData({message}));
+            }
         } catch (message) {
             // Fire event for request
             yield put(storeRequestFailed());

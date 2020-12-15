@@ -16,12 +16,9 @@ function LoginPage({errors, requests, dispatch}) {
         document.title = "Identification - MMAC";
     }, []);
 
-    const handleLogin = (data) => {
-        setLogin(data)
-    }
-
-    const handleIdentified = (data) => {
-        setIdentified(true)
+    const handleIdentified = (identifiedData, loginData) => {
+        setIdentified(identifiedData)
+        setLogin(loginData)
     }
 
     // Render
@@ -40,7 +37,7 @@ function LoginPage({errors, requests, dispatch}) {
                             {/* Input */}
                             {identified
                                 ? <PasswordProcessComponent dispatch={dispatch} login={login} />
-                                : <LoginProcessComponent dispatch={dispatch} handleLogin={handleLogin} handleIdentified={handleIdentified} />
+                                : <LoginProcessComponent requests={requests} dispatch={dispatch} handleIdentified={handleIdentified} />
                             }
                         </div>
                     </div>
@@ -59,6 +56,7 @@ function LoginPage({errors, requests, dispatch}) {
 
 // Prop types to ensure destroyed props data type
 LoginPage.propTypes = {
+    user: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
     requests: PropTypes.object.isRequired
