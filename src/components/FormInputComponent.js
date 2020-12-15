@@ -2,7 +2,7 @@ import React  from 'react';
 import PropTypes from 'prop-types';
 
 // Component
-function FormInput({inputEnable, handleInput}) {
+function FormInputComponent({inputType, inputEnable, handleInput}) {
 
     // Handle input change
     const handleInputChange = (e) => {
@@ -13,7 +13,7 @@ function FormInput({inputEnable, handleInput}) {
     return (
         <>
             <div className="input-group">
-                <input type="text"
+                <input type={inputType}
                        placeholder="Login"
                        disabled={!inputEnable}
                        className="form-control"
@@ -31,9 +31,10 @@ function FormInput({inputEnable, handleInput}) {
 }
 
 // Prop types to ensure destroyed props data type
-FormInput.propTypes = {
+FormInputComponent.propTypes = {
+    inputType: PropTypes.string.isRequired,
     inputEnable: PropTypes.bool.isRequired,
     handleInput: PropTypes.func.isRequired
 };
 
-export default React.memo(FormInput);
+export default React.memo(FormInputComponent);

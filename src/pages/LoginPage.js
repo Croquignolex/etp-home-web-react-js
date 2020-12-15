@@ -1,47 +1,28 @@
 import PropTypes from "prop-types";
 import React, {useEffect, useState} from 'react';
 
-import FormInput from "../components/FormInput";
-import ErrorAlert from "../components/ErrorAlert";
-import {storeResetErrorData} from "../redux/errors/actions";
+import ErrorAlertComponent from "../components/ErrorAlertComponent";
+import LoginProcessComponent from "../components/LoginProcessComponent";
+import PasswordProcessComponent from "../components/PasswordProcessComponent";
 
 // Component
 function LoginPage({errors, requests, dispatch}) {
     // Local state
-    const [inputEnable, setInputEnable] = useState(true);
+    const [login, setLogin] = useState('');
+    const [identified, setIdentified] = useState(false);
 
     // local effects
     useEffect(() => {
         document.title = "Identification - MMAC";
     }, []);
 
-    // Handle phone input
-    const handlePhoneInput = (phone) => {
-        dispatch(storeResetErrorData());
-
-        if(phone.length === 9) {
-            setInputEnable(false);
-        }
+    const handleLogin = (data) => {
+        setLogin(data)
     }
 
-    // Trigger login form submit
-    const handleSubmit = (e) => {
-       /* e.preventDefault();
-        shouldResetErrorData();
-        const _username = phoneChecker(username);
-        const _password = passwordChecker(password);
-        // Set value
-        setUsername(_username);
-        setPassword(_password);
-        const validationOK = _username.isValid && _password.isValid;
-        // Check
-        if(validationOK) {
-            dispatch(emitAttemptUserAuthentication({
-                phone: _username.val,
-                password: _password.val
-            }));
-        } else playWarningSound();*/
-    };
+    const handleIdentified = (data) => {
+        setIdentified(true)
+    }
 
     // Render
     return (
@@ -54,19 +35,14 @@ function LoginPage({errors, requests, dispatch}) {
                 <div className="card no-shadow">
                     <div className="card-body login-card-body">
                         {/* Error message */}
-                        {errors.show && <ErrorAlert message={errors.message} />}
-                        {/* Identification form */}
-                        <form name="form" className="text-center">
+                        {errors.show && <ErrorAlertComponent message={errors.message} />}
+                        <div className="text-center">
                             {/* Input */}
-                            <FormInput inputEnable={inputEnable} handleInput={handlePhoneInput} />
-                            {/* loader */}
-                            {!inputEnable && (
-                                <img width={70}
-                                     alt='loading...'
-                                     src={require('../assets/images/spinner-theme.svg')}
-                                />
-                            )}
-                        </form>
+                            {identified
+                                ? <PasswordProcessComponent dispatch={dispatch} login={login} />
+                                : <LoginProcessComponent dispatch={dispatch} handleLogin={handleLogin} handleIdentified={handleIdentified} />
+                            }
+                        </div>
                     </div>
                 </div>
             </div>

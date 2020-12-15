@@ -6,7 +6,7 @@ import {Alert} from "react-bootstrap";
 import mp3ErrorFile from "../assets/audio/error.mp3";
 
 // Component
-function ErrorAlert({message}) {
+function ErrorAlertComponent({message}) {
     // Play sound
     playErrorSound();
 
@@ -27,9 +27,9 @@ function playErrorSound() {
 }
 
 // Prop types to ensure destroyed props data type
-ErrorAlert.propTypes = {
+ErrorAlertComponent.propTypes = {
     message: PropTypes.string.isRequired
 };
 
 // Connect component to Redux
-export default React.memo(ErrorAlert);
+export default React.memo(ErrorAlertComponent);
