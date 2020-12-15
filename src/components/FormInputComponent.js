@@ -2,7 +2,7 @@ import React  from 'react';
 import PropTypes from 'prop-types';
 
 // Component
-function FormInputComponent({inputType, inputEnable, handleInput}) {
+function FormInputComponent({inputType, inputPlaceholder, inputEnable, handleInput}) {
 
     // Handle input change
     const handleInputChange = (e) => {
@@ -14,10 +14,10 @@ function FormInputComponent({inputType, inputEnable, handleInput}) {
         <>
             <div className="input-group">
                 <input type={inputType}
-                       placeholder="Login"
                        disabled={!inputEnable}
                        className="form-control"
                        onChange={handleInputChange}
+                       placeholder={inputPlaceholder}
                 />
                 {/* Icon */}
                 <div className="input-group-append">
@@ -34,7 +34,8 @@ function FormInputComponent({inputType, inputEnable, handleInput}) {
 FormInputComponent.propTypes = {
     inputType: PropTypes.string.isRequired,
     inputEnable: PropTypes.bool.isRequired,
-    handleInput: PropTypes.func.isRequired
+    handleInput: PropTypes.func.isRequired,
+    inputPlaceholder: PropTypes.string.isRequired
 };
 
 export default React.memo(FormInputComponent);

@@ -4,6 +4,7 @@ import React, {useEffect, useState} from 'react';
 import FormInputComponent from "./FormInputComponent";
 import {storeResetErrorData} from "../redux/errors/actions";
 import {emitAttemptUserIdentification} from "../redux/user/actions";
+import {requestLoading, requestSucceeded} from "../functions/defaultFunctions";
 
 // Component
 function LoginProcessComponent({requests, dispatch, handleIdentified}) {
@@ -24,35 +25,17 @@ function LoginProcessComponent({requests, dispatch, handleIdentified}) {
 
         if(data.length === 9) {
             setPhone(data);
-            dispatch(emitAttemptUserIdentification({data}));
+            dispatch(emitAttemptUserIdentification({phone: data}));
         }
     }
 
     // Render
     return (
         <>
-            <FormInputComponent inputType="text" inputEnable={!requestLoading(requests)} handleInput={handleInput} />
+            <FormInputComponent inputPlaceholder="Identifiant" inputType="text" inputEnable={!requestLoading(requests)} handleInput={handleInput} />
             {requestLoading(requests) && <img width={70} alt='loading...' src={require('../assets/images/spinner-theme.svg')} />}
         </>
     )
-}
-
-// Check if request has succeeded
-function requestSucceeded(requests) {
-    const {failed, loading, succeeded} = requests
-    return succeeded && !failed && !loading;
-}
-
-// Check if request has failed
-function requestFailed(requests) {
-    const {failed, loading, succeeded} = requests
-    return !succeeded && failed && !loading;
-}
-
-// Check if request is in loading
-function requestLoading(requests) {
-    const {failed, loading, succeeded} = requests
-    return !succeeded && !failed && loading;
 }
 
 // Prop types to ensure destroyed props data type
