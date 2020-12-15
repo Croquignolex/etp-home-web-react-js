@@ -36,7 +36,7 @@ function LoginPage({errors, requests, dispatch}) {
                         <div className="text-center">
                             {/* Input */}
                             {identified
-                                ? <PasswordProcessComponent dispatch={dispatch} login={login} />
+                                ? <PasswordProcessComponent requests={requests} dispatch={dispatch} login={login} />
                                 : <LoginProcessComponent requests={requests} dispatch={dispatch} handleIdentified={handleIdentified} />
                             }
                         </div>

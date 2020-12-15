@@ -32,7 +32,7 @@ function LoginProcessComponent({requests, dispatch, handleIdentified}) {
     // Render
     return (
         <>
-            <FormInputComponent inputPlaceholder="Identifiant" inputType="text" inputEnable={!requestLoading(requests)} handleInput={handleInput} />
+            <FormInputComponent inputIcon="fas fa-phone" inputPlaceholder="Identifiant" inputType="text" inputEnable={!requestLoading(requests)} handleInput={handleInput} />
             {requestLoading(requests) && <img width={70} alt='loading...' src={require('../assets/images/spinner-theme.svg')} />}
         </>
     )

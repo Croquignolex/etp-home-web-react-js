@@ -2,7 +2,7 @@ import React  from 'react';
 import PropTypes from 'prop-types';
 
 // Component
-function FormInputComponent({inputType, inputPlaceholder, inputEnable, handleInput}) {
+function FormInputComponent({inputIcon, inputType, inputPlaceholder, inputEnable, handleInput}) {
 
     // Handle input change
     const handleInputChange = (e) => {
@@ -22,7 +22,7 @@ function FormInputComponent({inputType, inputPlaceholder, inputEnable, handleInp
                 {/* Icon */}
                 <div className="input-group-append">
                     <div className="input-group-text">
-                        <span className="fas fa-phone" />
+                        <span className={inputIcon} />
                     </div>
                 </div>
             </div>
@@ -32,6 +32,7 @@ function FormInputComponent({inputType, inputPlaceholder, inputEnable, handleInp
 
 // Prop types to ensure destroyed props data type
 FormInputComponent.propTypes = {
+    inputIcon: PropTypes.string.isRequired,
     inputType: PropTypes.string.isRequired,
     inputEnable: PropTypes.bool.isRequired,
     handleInput: PropTypes.func.isRequired,
