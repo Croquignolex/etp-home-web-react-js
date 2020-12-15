@@ -4,7 +4,7 @@ import Loader from "../../Loader";
 import Select from "../form/Select";
 import ErrorAlert from "../../ErrorAlert";
 import Button from "../../app/form/Button";
-import {requiredChecker} from "../../../helpers/formsChecker";
+import {requiredChecker} from "../../../functions/formsChecker";
 import {storeResetErrorData} from "../../../redux/errors/actions";
 import {emitUpdateCompanyAgent} from "../../../redux/sims/actions";
 import {emitCompaniesFetch} from "../../../redux/companies/actions";

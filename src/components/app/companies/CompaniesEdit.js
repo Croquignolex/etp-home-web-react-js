@@ -7,7 +7,7 @@ import Button from "../../app/form/Button";
 import TextArea from "../../app/form/Textarea";
 import {storeResetErrorData} from "../../../redux/errors/actions";
 import {emitUpdateCompany} from "../../../redux/companies/actions";
-import {phoneChecker, requiredChecker} from "../../../helpers/formsChecker";
+import {phoneChecker, requiredChecker} from "../../../functions/formsChecker";
 import {
     COMPANY_SCOPE,
     DEFAULT_FORM_DATA,

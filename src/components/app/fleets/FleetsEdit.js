@@ -7,7 +7,7 @@ import Amount from "../form/Amount";
 import ErrorAlert from "../../ErrorAlert";
 import Button from "../../app/form/Button";
 import {emitAgentsFetch} from "../../../redux/agents/actions";
-import {requiredChecker} from "../../../helpers/formsChecker";
+import {requiredChecker} from "../../../functions/formsChecker";
 import {storeResetErrorData} from "../../../redux/errors/actions";
 import {emitUpdateFleetByAgent, emitUpdateFleetByCollector} from "../../../redux/fleets/actions";
 import {

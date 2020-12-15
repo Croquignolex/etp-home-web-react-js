@@ -5,7 +5,7 @@ import Loader from "../../Loader";
 import Input from "../../app/form/Input";
 import ErrorAlert from "../../ErrorAlert";
 import Button from "../../app/form/Button";
-import {requiredChecker} from "../../../helpers/formsChecker";
+import {requiredChecker} from "../../../functions/formsChecker";
 import {storeResetErrorData} from "../../../redux/errors/actions";
 import {emitUpdateFleetByManager} from "../../../redux/fleets/actions";
 import {DEFAULT_FORM_DATA, FLEET_EDIT_SCOPE} from "../../../helpers/constants";

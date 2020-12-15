@@ -6,7 +6,7 @@ import Amount from "../form/Amount";
 import ErrorAlert from "../../ErrorAlert";
 import {emitSimsFetch} from "../../../redux/sims/actions";
 import {emitAgentsFetch} from "../../../redux/agents/actions";
-import {requiredChecker} from "../../../helpers/formsChecker";
+import {requiredChecker} from "../../../functions/formsChecker";
 import {storeResetErrorData} from "../../../redux/errors/actions";
 import {emitNetworkNewSupply, emitNewSupply} from "../../../redux/supplies/actions";
 import {

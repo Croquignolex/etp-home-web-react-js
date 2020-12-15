@@ -5,7 +5,7 @@ import Button from "../form/Button";
 import ErrorAlert from "../../ErrorAlert";
 import Select from "../../app/form/Select";
 import {emitRolesFetch} from "../../../redux/roles/actions";
-import {requiredChecker} from "../../../helpers/formsChecker";
+import {requiredChecker} from "../../../functions/formsChecker";
 import {emitUpdateUserRole} from "../../../redux/users/actions";
 import {storeResetErrorData} from "../../../redux/errors/actions";
 import {

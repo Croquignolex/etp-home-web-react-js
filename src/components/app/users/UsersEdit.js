@@ -7,7 +7,7 @@ import ErrorAlert from "../../ErrorAlert";
 import Button from "../../app/form/Button";
 import TextArea from "../../app/form/Textarea";
 import {emitUpdateUser} from "../../../redux/users/actions";
-import {requiredChecker} from "../../../helpers/formsChecker";
+import {requiredChecker} from "../../../functions/formsChecker";
 import {storeResetErrorData} from "../../../redux/errors/actions";
 import {emitUserInformationUpdate} from "../../../redux/user/actions";
 import {playWarningSound, shouldShowError} from "../../../helpers/functions";

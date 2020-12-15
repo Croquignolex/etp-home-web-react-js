@@ -7,7 +7,7 @@ import TextArea from "../../app/form/Textarea";
 import DisabledInput from "../form/DisabledInput";
 import {storeResetErrorData} from "../../../redux/errors/actions";
 import {emitAddZoneCollectors} from "../../../redux/zones/actions";
-import {phoneChecker, requiredChecker} from "../../../helpers/formsChecker";
+import {phoneChecker, requiredChecker} from "../../../functions/formsChecker";
 import {
     DEFAULT_PASSWORD,
     DEFAULT_FORM_DATA,

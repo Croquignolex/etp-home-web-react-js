@@ -11,7 +11,7 @@ import {emitAgentsFetch} from "../../../redux/agents/actions";
 import {storeResetErrorData} from "../../../redux/errors/actions";
 import {emitNewCashRecovery} from "../../../redux/recoveries/actions";
 import {emitSuppliesFetchByCollector} from "../../../redux/supplies/actions";
-import {requiredChecker, requiredFileChecker} from "../../../helpers/formsChecker";
+import {requiredChecker, requiredFileChecker} from "../../../functions/formsChecker";
 import {
     AGENTS_SCOPE,
     SUPPLIES_SCOPE,

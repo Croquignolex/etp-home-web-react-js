@@ -5,7 +5,7 @@ import ErrorAlert from "../../ErrorAlert";
 import FileImageType from "../form/FileImageType";
 import {emitUserAvatarUpdate} from "../../../redux/user/actions";
 import {storeResetErrorData} from "../../../redux/errors/actions";
-import {requiredImageChecker} from "../../../helpers/formsChecker";
+import {requiredImageChecker} from "../../../functions/formsChecker";
 import {DEFAULT_FORM_DATA, PROFILE_AVATAR_SCOPE} from "../../../helpers/constants";
 import {DispatchContext, ErrorsContext, RequestsContext} from "../../../helpers/contexts";
 import {

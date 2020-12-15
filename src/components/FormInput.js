@@ -1,12 +1,15 @@
 import React  from 'react';
 import PropTypes from 'prop-types';
 
-import {getFieldColor} from "../../../helpers/functions";
-
 // Component
-function AuthFormInput({label, type, icon, input, handleInput}) {
+function FormInput({label, type, icon, input, handleInput}) {
     // Data
     const {val, message, isValid} = input;
+
+    // Func
+    const handleInputChange = (e) => {
+        handleInput(true, e.target.value)
+    }
 
     // Render
     return (
@@ -17,7 +20,7 @@ function AuthFormInput({label, type, icon, input, handleInput}) {
                        placeholder={label}
                        value={val ? val : ''}
                        style={getFieldColor(input)}
-                       onChange={(e) => handleInput(true, e.target.value)}
+                       onChange={handleInputChange}
                        className={`form-control ${!isValid && 'is-invalid'}`}
                 />
                 {/* Icon */}
@@ -31,8 +34,12 @@ function AuthFormInput({label, type, icon, input, handleInput}) {
     )
 }
 
+function getFieldColor(field) {
+    return {color: (field.isValid ? '#22252a' : '#e22529')}
+}
+
 // Prop types to ensure destroyed props data type
-AuthFormInput.propTypes = {
+FormInput.propTypes = {
     icon: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
@@ -40,4 +47,4 @@ AuthFormInput.propTypes = {
     handleInput: PropTypes.func.isRequired,
 };
 
-export default React.memo(AuthFormInput);
+export default React.memo(FormInput);

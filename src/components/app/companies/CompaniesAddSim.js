@@ -10,7 +10,7 @@ import {storeResetErrorData} from "../../../redux/errors/actions";
 import {emitSimsTypesFetch} from "../../../redux/simsTypes/actions";
 import {emitOperatorsFetch} from "../../../redux/operators/actions";
 import {emitAddCompanySims} from "../../../redux/companies/actions";
-import {phoneChecker, requiredChecker} from "../../../helpers/formsChecker";
+import {phoneChecker, requiredChecker} from "../../../functions/formsChecker";
 import {
     CORPORATE_TYPE,
     OPERATORS_SCOPE,

@@ -5,7 +5,7 @@ import Input from "../../app/form/Input";
 import ErrorAlert from "../../ErrorAlert";
 import Button from "../../app/form/Button";
 import TextArea from "../../app/form/Textarea";
-import {requiredChecker} from "../../../helpers/formsChecker";
+import {requiredChecker} from "../../../functions/formsChecker";
 import {storeResetErrorData} from "../../../redux/errors/actions";
 import {emitUpdateOperator} from "../../../redux/operators/actions";
 import {

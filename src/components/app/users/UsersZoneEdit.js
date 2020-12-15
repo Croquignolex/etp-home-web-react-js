@@ -6,7 +6,7 @@ import Button from "../form/Button";
 import ErrorAlert from "../../ErrorAlert";
 import Select from "../../app/form/Select";
 import {emitZonesFetch} from "../../../redux/zones/actions";
-import {requiredChecker} from "../../../helpers/formsChecker";
+import {requiredChecker} from "../../../functions/formsChecker";
 import {storeResetErrorData} from "../../../redux/errors/actions";
 import {emitUpdateAgentZone} from "../../../redux/agents/actions";
 import {emitUpdateCollectorZone} from "../../../redux/collectors/actions";

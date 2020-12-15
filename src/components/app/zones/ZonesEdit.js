@@ -7,7 +7,7 @@ import ErrorAlert from "../../ErrorAlert";
 import Button from "../../app/form/Button";
 import TextArea from "../../app/form/Textarea";
 import {emitUpdateZone} from "../../../redux/zones/actions";
-import {requiredChecker} from "../../../helpers/formsChecker";
+import {requiredChecker} from "../../../functions/formsChecker";
 import {storeResetErrorData} from "../../../redux/errors/actions";
 import {DEFAULT_FORM_DATA, ZONE_EDIT_SCOPE} from "../../../helpers/constants";
 import {

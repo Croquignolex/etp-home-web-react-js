@@ -6,7 +6,7 @@ import ErrorAlert from "../../ErrorAlert";
 import Button from "../../app/form/Button";
 import FileDocumentType from "../form/FileDocumentType";
 import {processingRequest} from "../../../helpers/functions";
-import {requiredFileChecker} from "../../../helpers/formsChecker";
+import {requiredFileChecker} from "../../../functions/formsChecker";
 import {emitUpdateAgentFile} from "../../../redux/agents/actions";
 import {storeResetErrorData} from "../../../redux/errors/actions";
 import {emitUpdateCompanyFile} from "../../../redux/companies/actions";

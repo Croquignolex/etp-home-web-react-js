@@ -4,7 +4,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import Button from "../form/Button";
 import Amount from "../form/Amount";
 import ErrorAlert from "../../ErrorAlert";
-import {requiredChecker} from "../../../helpers/formsChecker";
+import {requiredChecker} from "../../../functions/formsChecker";
 import {storeResetErrorData} from "../../../redux/errors/actions";
 import {emitClearanceProceedByCollector} from "../../../redux/clearances/actions";
 import {

@@ -9,7 +9,7 @@ import ErrorAlert from "../../ErrorAlert";
 import {emitSimsFetch} from "../../../redux/sims/actions";
 import {storeResetErrorData} from "../../../redux/errors/actions";
 import {emitNewAnonymousFleet} from "../../../redux/anonymous/actions";
-import {phoneChecker, requiredChecker} from "../../../helpers/formsChecker";
+import {phoneChecker, requiredChecker} from "../../../functions/formsChecker";
 import {
     MANAGER,
     FLEET_TYPE,

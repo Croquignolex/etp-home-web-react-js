@@ -11,7 +11,7 @@ import {storeResetErrorData} from "../../../redux/errors/actions";
 import {emitSimsTypesFetch} from "../../../redux/simsTypes/actions";
 import {emitCompaniesFetch} from "../../../redux/companies/actions";
 import {emitAddOperatorSims} from "../../../redux/operators/actions";
-import {phoneChecker, requiredChecker} from "../../../helpers/formsChecker";
+import {phoneChecker, requiredChecker} from "../../../functions/formsChecker";
 import {
     AGENTS_SCOPE,
     COMPANIES_SCOPE,

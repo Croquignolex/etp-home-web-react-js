@@ -7,7 +7,7 @@ import FileImageType from "../form/FileImageType";
 import {processingRequest} from "../../../helpers/functions";
 import {emitUpdateAgentCNI} from "../../../redux/agents/actions";
 import {storeResetErrorData} from "../../../redux/errors/actions";
-import {requiredImageChecker} from "../../../helpers/formsChecker";
+import {requiredImageChecker} from "../../../functions/formsChecker";
 import {playWarningSound, shouldShowError} from "../../../helpers/functions";
 import {
     AGENT_SCOPE,

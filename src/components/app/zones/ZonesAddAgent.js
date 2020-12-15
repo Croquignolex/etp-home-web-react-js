@@ -14,7 +14,7 @@ import {
     imageChecker,
     phoneChecker,
     requiredChecker
-} from "../../../helpers/formsChecker";
+} from "../../../functions/formsChecker";
 import {
     DEFAULT_TOWN,
     DEFAULT_COUNTRY,

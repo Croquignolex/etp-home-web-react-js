@@ -6,7 +6,7 @@ import ErrorAlert from "../../ErrorAlert";
 import {storeResetErrorData} from "../../../redux/errors/actions";
 import {emitUserPasswordUpdate} from "../../../redux/user/actions";
 import {DEFAULT_FORM_DATA, PROFILE_PASSWORD_SCOPE} from "../../../helpers/constants";
-import {passwordChecker, passwordConfirmChecker} from "../../../helpers/formsChecker";
+import {passwordChecker, passwordConfirmChecker} from "../../../functions/formsChecker";
 import {ErrorsContext, DispatchContext, RequestsContext} from "../../../helpers/contexts";
 import {
     shouldShowError,

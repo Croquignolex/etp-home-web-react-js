@@ -9,7 +9,7 @@ import FileDocumentType from "../form/FileDocumentType";
 import {emitNewOutlay} from "../../../redux/outlays/actions";
 import {storeResetErrorData} from "../../../redux/errors/actions";
 import {emitCollectorsFetch} from "../../../redux/collectors/actions";
-import {fileChecker, requiredChecker} from "../../../helpers/formsChecker";
+import {fileChecker, requiredChecker} from "../../../functions/formsChecker";
 import {DEFAULT_FORM_DATA, COLLECTORS_SCOPE, OUTLAY_NEW_SCOPE} from "../../../helpers/constants";
 import {
     shouldShowError,

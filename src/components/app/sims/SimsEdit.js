@@ -6,7 +6,7 @@ import ErrorAlert from "../../ErrorAlert";
 import Button from "../../app/form/Button";
 import TextArea from "../../app/form/Textarea";
 import {emitUpdateSim} from "../../../redux/sims/actions";
-import {requiredChecker} from "../../../helpers/formsChecker";
+import {requiredChecker} from "../../../functions/formsChecker";
 import {storeResetErrorData} from "../../../redux/errors/actions";
 import {DEFAULT_FORM_DATA, SIM_EDIT_SCOPE, SIM_SCOPE} from "../../../helpers/constants";
 import {

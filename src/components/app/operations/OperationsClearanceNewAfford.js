@@ -10,7 +10,7 @@ import {emitSimsFetch} from "../../../redux/sims/actions";
 import {emitNewAfford} from "../../../redux/refuels/actions";
 import {emitAgentsFetch} from "../../../redux/agents/actions";
 import {storeResetErrorData} from "../../../redux/errors/actions";
-import {requiredChecker, requiredFileChecker} from "../../../helpers/formsChecker";
+import {requiredChecker, requiredFileChecker} from "../../../functions/formsChecker";
 import {
     VENDORS,
     SIMS_SCOPE,

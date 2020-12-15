@@ -1,15 +1,21 @@
 import PropTypes from "prop-types";
 import React, {useEffect, useState} from 'react';
 
-import Input from "../components/auth/form/Input";
-import {getPageTitle} from "../helpers/functions";
+import FormInput from "../components/FormInput";
 
 // Component
-function LoginPage({errors, requests, user, notifications, dispatch}) {
+function LoginPage({errors, requests, user, dispatch}) {
     // Local state
     const [phone, setPhone] = useState({isValid: true, message: '', val: ''});
 
-    useEffect(() => { document.title = getPageTitle("Connexion"); }, []);
+    useEffect(() => {
+        document.title = "Identification - MMAC";
+    }, []);
+
+    const handlePhoneInput = (isValid, val) => {
+        // shouldResetErrorData();
+        setPhone({...phone, isValid, val});
+    }
 
     // Trigger login form submit
     const handleSubmit = (e) => {
@@ -42,15 +48,15 @@ function LoginPage({errors, requests, user, notifications, dispatch}) {
                         {/*{shouldShowError(scope, errors.list) &&
                             <ErrorAlert scope={scope} />
                         }*/}
+                        {errors.show &&
+                            <ErrorAlert scope={scope} />
+                        }
                         <form name="form">
-                            <Input type='number'
+                            <FormInput type='number'
                                    input={phone}
                                    icon='fas fa-phone'
                                    label='Numéro de téléphone'
-                                   handleInput={(isValid, val) => {
-                                       // shouldResetErrorData();
-                                       setPhone({...phone, isValid, val});
-                                   }}
+                                   handleInput={handlePhoneInput}
                             />
                         </form>
                     </div>
@@ -72,8 +78,7 @@ LoginPage.propTypes = {
     user: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
-    requests: PropTypes.object.isRequired,
-    notifications: PropTypes.object.isRequired,
+    requests: PropTypes.object.isRequired
 };
 
 export default React.memo(LoginPage);
