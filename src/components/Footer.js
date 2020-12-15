@@ -7,10 +7,10 @@ import '../assets/scss/footer.scss';
 function Footer({needAbsolutePosition}) {
     // Render
     return (
-        <footer className={`app-footer text-right ${needAbsolutePosition && 'absolute-position'}`}>
+        <footer className="app-footer text-right absolute-position">
             <small>
                 <strong>Copyright &copy; 2020.</strong>
-                &nbsp;&nbsp;All rights reserved.
+                &nbsp;&nbsp; All rights reserved.
             </small>
         </footer>
     )

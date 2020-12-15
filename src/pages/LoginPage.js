@@ -1,44 +1,19 @@
-import React, {useContext, useEffect, useState} from 'react';
+import PropTypes from "prop-types";
+import React, {useEffect, useState} from 'react';
 
-import Footer from "../components/Footer";
 import Input from "../components/auth/form/Input";
-import ErrorAlert from "../components/ErrorAlert";
-import {storeResetErrorData} from "../redux/errors/actions";
-import AppHigherOrder from "../components/layout/AppHigherOrder";
-import {emitAttemptUserAuthentication} from "../redux/user/actions";
-import {phoneChecker, passwordChecker} from "../helpers/formsChecker";
-import {DEFAULT_FORM_DATA, LOGIN_SCOPE} from "../helpers/constants";
-import {DispatchContext, ErrorsContext, RequestsContext} from "../helpers/contexts";
-import {shouldShowError, playWarningSound} from "../helpers/functions";
+import {getPageTitle} from "../helpers/functions";
 
 // Component
-function LoginPage() {
+function LoginPage({errors, requests, user, notifications, dispatch}) {
     // Local state
-    const [username, setUsername] = useState(DEFAULT_FORM_DATA);
-    const [password, setPassword] = useState(DEFAULT_FORM_DATA);
+    const [phone, setPhone] = useState({isValid: true, message: '', val: ''});
 
-    // Context states
-    const errors = useContext(ErrorsContext);
-    const requests = useContext(RequestsContext);
-    const dispatch = useContext(DispatchContext);
-
-    // Data
-    const scope = LOGIN_SCOPE;
-    const shouldResetErrorData = () => {
-        shouldShowError(scope, errors.list) && dispatch(storeResetErrorData({scope}));
-    };
-
-    useEffect(() => {
-        // Cleaner error alert while component did unmount without store dependency
-        return () => {
-            shouldResetErrorData();
-        };
-        // eslint-disable-next-line
-    }, [scope]);
+    useEffect(() => { document.title = getPageTitle("Connexion"); }, []);
 
     // Trigger login form submit
     const handleSubmit = (e) => {
-        e.preventDefault();
+       /* e.preventDefault();
         shouldResetErrorData();
         const _username = phoneChecker(username);
         const _password = passwordChecker(password);
@@ -52,40 +27,53 @@ function LoginPage() {
                 phone: _username.val,
                 password: _password.val
             }));
-        } else playWarningSound();
+        } else playWarningSound();*/
     };
 
     // Render
     return (
-        <>
-            <div className="auth-home">
-                <div className="login-box">
-                    <div className="login-logo">
-                        <span><img alt="..." width="100" src={require('../assets/images/logo.png')} /></span>
-                    </div>
-                    <div className="card no-shadow">
-                        <div className="card-body login-card-body">
-                            {shouldShowError(scope, errors.list) &&
-                                <ErrorAlert scope={scope} />
-                            }
-                            <form name="form">
-                                <Input type='number'
-                                       input={username}
-                                       icon='fas fa-phone'
-                                       label='Numéro de téléphone'
-                                       handleInput={(isValid, val) => {
-                                           shouldResetErrorData();
-                                           setUsername({...username, isValid, val});
-                                       }}
-                                />
-                            </form>
-                        </div>
+        <div className="auth-home">
+            <div className="login-box">
+                <div className="login-logo">
+                    <span><img alt="..." width="100" src={require('../assets/images/logo.png')} /></span>
+                </div>
+                <div className="card no-shadow">
+                    <div className="card-body login-card-body">
+                        {/*{shouldShowError(scope, errors.list) &&
+                            <ErrorAlert scope={scope} />
+                        }*/}
+                        <form name="form">
+                            <Input type='number'
+                                   input={phone}
+                                   icon='fas fa-phone'
+                                   label='Numéro de téléphone'
+                                   handleInput={(isValid, val) => {
+                                       // shouldResetErrorData();
+                                       setPhone({...phone, isValid, val});
+                                   }}
+                            />
+                        </form>
                     </div>
                 </div>
-                <Footer needAbsolutePosition={true} />
             </div>
-        </>
+            {/* Footer area */}
+            <footer className="app-footer text-right absolute-position">
+                <small>
+                    <strong>Copyright &copy; 2020.</strong>
+                    &nbsp;&nbsp; All rights reserved.
+                </small>
+            </footer>
+        </div>
     )
 }
 
-export default AppHigherOrder(LoginPage);
+// Prop types to ensure destroyed props data type
+LoginPage.propTypes = {
+    user: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    requests: PropTypes.object.isRequired,
+    notifications: PropTypes.object.isRequired,
+};
+
+export default React.memo(LoginPage);
