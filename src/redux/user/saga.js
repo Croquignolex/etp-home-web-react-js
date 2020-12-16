@@ -30,8 +30,19 @@ export function* emitAttemptUserAuthentication() {
             // Fire event for request
             yield put(storeRequestInit());
             // API call
-            yield call(apiPostRequest, `${API_SERVER_URL}/login`, {phone, password});
-            yield put(storeRequestSucceeded());
+            const apiResponse = yield call(apiPostRequest, `${API_SERVER_URL}/login`, {phone, password});
+            const {role, token} = apiResponse;
+
+            //TODO: Javascript redirect into correct url
+            switch (role) {
+                case 'ADMIN': // https;//url?t=token
+                case 'AGENT': // https;//url?t=token
+                case 'RESSOURCE': // https;//url?t=token
+                case 'SUPERVISEUR': // https;//url?t=token
+                case 'GESTIONNAIRE DE FLOTTE': // https;//url?t=token
+                case 'RESPONSABLE DE ZONNE': // https;//url?t=token
+                default: // redirectsur place
+            }
         } catch (message) {
             // Fire event for request
             yield put(storeRequestFailed());
