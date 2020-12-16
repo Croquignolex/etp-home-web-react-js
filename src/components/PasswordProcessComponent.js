@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
-import React, {useEffect, useState} from 'react';
+import React, {useLayoutEffect, useState} from 'react';
 
 import FormInputComponent from "./FormInputComponent";
 import FormButtonComponent from "./FormButtonComponent";
 import {storeResetErrorData} from "../redux/errors/actions";
+import {requestLoading} from "../functions/defaultFunctions";
+import {emitAttemptUserAuthentication} from "../redux/user/actions";
 import DisabledFormInputComponent from "./DisabledFormInputComponent";
-import {requestLoading, requestSucceeded} from "../functions/defaultFunctions";
 
 // Component
 function PasswordProcessComponent({requests, dispatch, login}) {
@@ -13,12 +14,9 @@ function PasswordProcessComponent({requests, dispatch, login}) {
     const [password, setPassword] = useState('');
 
     // local effects
-    useEffect(() => {
-        // Identified user if phone number check is successful
-        if(requestSucceeded(requests)) {
-            // Redirect to correct app
-        }
-    }, [requests]);
+    useLayoutEffect(() => {
+        document.title = "Authentification - MMAC";
+    }, []);
 
     // Handle phone input
     const handleInput = (data) => {
@@ -26,11 +24,16 @@ function PasswordProcessComponent({requests, dispatch, login}) {
         setPassword(data);
     }
 
-    // dispatch(emitAttemptUserAuthentication({phone: login, password: data}));
+    // Form submission
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(storeResetErrorData());
+        dispatch(emitAttemptUserAuthentication({phone: login, password}));
+    }
 
     // Render
     return (
-        <form name="form">
+        <form name="form" onSubmit={handleSubmit}>
             <div className="mb-3"><DisabledFormInputComponent val={login} /></div>
             <FormInputComponent inputIcon="fas fa-lock" inputPlaceholder="Mot de passe" inputType="password" inputEnable={!requestLoading(requests)} handleInput={handleInput} />
             <div className="row mt-3">

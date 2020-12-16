@@ -13,7 +13,7 @@ function reduce(state = initialState, action) {
     switch (action.type) {
         // Resolve event to set init request store data
         case STORE_REQUEST_INIT:
-            nextState = {...state, failed: true, loading: true, succeeded: false};
+            nextState = {...state, failed: false, loading: true, succeeded: false};
             return nextState || state;
         // Resolve event to set failed request store data
         case STORE_REQUEST_FAILED:

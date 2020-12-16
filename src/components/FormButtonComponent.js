@@ -8,9 +8,7 @@ function FormButtonComponent({processing}) {
         <div className="col-6">
             {processing ?
                 (
-                    <button disabled type="submit"
-                            className="login-btn btn btn-block"
-                    >
+                    <button disabled type="submit" className="login-btn btn btn-secondary btn-block">
                         <img alt='...'
                              className="spinner-loader"
                              src={require('../assets/images/spinner-light.svg')}
@@ -18,9 +16,7 @@ function FormButtonComponent({processing}) {
                     </button>
                 ) :
                 (
-                    <button type="submit"
-                            className="login-btn btn btn-dark btn-block"
-                    >
+                    <button type="submit" className="login-btn btn btn-dark btn-block">
                         <i className='fa fa-sign-in' />&nbsp;
                         Connexion
                     </button>

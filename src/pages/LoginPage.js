@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 
 import ErrorAlertComponent from "../components/ErrorAlertComponent";
 import LoginProcessComponent from "../components/LoginProcessComponent";
@@ -10,11 +10,6 @@ function LoginPage({errors, requests, dispatch}) {
     // Local state
     const [login, setLogin] = useState('');
     const [identified, setIdentified] = useState(false);
-
-    // local effects
-    useEffect(() => {
-        document.title = "Identification - MMAC";
-    }, []);
 
     const handleIdentified = (identifiedData, loginData) => {
         setIdentified(identifiedData)
@@ -56,7 +51,6 @@ function LoginPage({errors, requests, dispatch}) {
 
 // Prop types to ensure destroyed props data type
 LoginPage.propTypes = {
-    user: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
     requests: PropTypes.object.isRequired

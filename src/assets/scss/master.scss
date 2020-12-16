@@ -90,6 +90,16 @@ code {
     }
 }
 
+.login-btn {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    border: none;
+}
+
 .center-loader {
     margin: auto;
 }

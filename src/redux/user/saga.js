@@ -41,7 +41,6 @@ export function* emitAttemptUserAuthentication() {
 }
 
 function apiPostRequest(url, data = {}) {
-    console.log(data)
     return new Promise((resolve, reject) => {
         axios.post(url, data)
             .then(res => {
