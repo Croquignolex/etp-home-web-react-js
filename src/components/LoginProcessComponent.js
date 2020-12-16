@@ -22,6 +22,7 @@ function LoginProcessComponent({requests, dispatch, handleIdentified}) {
         if(requestSucceeded(requests)) {
             handleIdentified(true, phone)
         }
+        // eslint-disable-next-line
     }, [requests]);
 
     // Handle phone input

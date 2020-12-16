@@ -1,5 +1,5 @@
+import UIfx from "uifx";
 import React from "react";
-import * as UIfx from "uifx";
 import PropTypes from "prop-types";
 import {Alert} from "react-bootstrap";
 

@@ -33,15 +33,14 @@ export function* emitAttemptUserAuthentication() {
             const apiResponse = yield call(apiPostRequest, `${API_SERVER_URL}/login`, {phone, password});
             const {role, token} = apiResponse;
 
-            //TODO: Javascript redirect into correct url
             switch (role) {
-                case 'ADMIN': // https;//url?t=token
-                case 'AGENT': // https;//url?t=token
-                case 'RESSOURCE': // https;//url?t=token
-                case 'SUPERVISEUR': // https;//url?t=token
-                case 'GESTIONNAIRE DE FLOTTE': // https;//url?t=token
-                case 'RESPONSABLE DE ZONNE': // https;//url?t=token
-                default: // redirectsur place
+                case 'ADMIN': window.location.replace("https://etp-admin.moyo-industry.com?token=" + token); break;
+                case 'AGENT': window.location.replace("https://etp-agent.moyo-industry.com?token=" + token); break;
+                case 'RESSOURCE': window.location.replace("https://etp-resource.moyo-industry.com?token=" + token); break;
+                case 'SUPERVISEUR': window.location.replace("https://etp-supervisor.moyo-industry.com?token=" + token); break;
+                case 'GESTIONNAIRE DE FLOTTE': window.location.replace("https://etp-manager.moyo-industry.com?token=" + token); break;
+                case 'RESPONSABLE DE ZONNE': window.location.replace("https://etp-collector.moyo-industry.com?token=" + token); break;
+                default: window.location.replace("https://etp.moyo-industry.com");
             }
         } catch (message) {
             // Fire event for request
