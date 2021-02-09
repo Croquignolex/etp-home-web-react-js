@@ -13,7 +13,8 @@ function FormInputComponent({inputIcon, inputType, inputPlaceholder, inputEnable
     return (
         <>
             <div className="input-group">
-                <input type={inputType}
+                <input autoFocus
+                       type={inputType}
                        disabled={!inputEnable}
                        className="form-control"
                        onChange={handleInputChange}
