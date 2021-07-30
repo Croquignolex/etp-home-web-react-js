@@ -11,7 +11,9 @@ import {
     API_SERVER_URL,
     MANAGER_ROLE_URL,
     RESOURCE_ROLE_URL,
+    OVERSEER_ROLE_URL,
     COLLECTOR_ROLE_URL,
+    ACCOUNTANT_ROLE_URL,
     SUPERVISOR_ROLE_URL
 } from "../../constants/defaultConstants";
 
@@ -46,6 +48,8 @@ export function* emitAttemptUserAuthentication() {
                 case 'ADMIN': window.location.replace(ADMIN_ROLE_URL + "?token=" + token); break;
                 case 'AGENT': window.location.replace(AGENT_ROLE_URL + "?token=" + token); break;
                 case 'RESSOURCE': window.location.replace(RESOURCE_ROLE_URL + "?token=" + token); break;
+                case 'CONTROLLEUR': window.location.replace(OVERSEER_ROLE_URL + "?token=" + token); break;
+                case 'COMPATBLE': window.location.replace(ACCOUNTANT_ROLE_URL + "?token=" + token); break;
                 case 'SUPERVISEUR': window.location.replace(SUPERVISOR_ROLE_URL + "?token=" + token); break;
                 case 'GESTIONNAIRE DE FLOTTE': window.location.replace(MANAGER_ROLE_URL + "?token=" + token); break;
                 case 'RESPONSABLE DE ZONNE': window.location.replace(COLLECTOR_ROLE_URL + "?token=" + token); break;
