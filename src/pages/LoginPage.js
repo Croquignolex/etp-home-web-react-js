@@ -4,6 +4,7 @@ import React, {useState} from 'react';
 import ErrorAlertComponent from "../components/ErrorAlertComponent";
 import LoginProcessComponent from "../components/LoginProcessComponent";
 import PasswordProcessComponent from "../components/PasswordProcessComponent";
+import {connect} from "react-redux";
 
 // Component
 function LoginPage({errors, requests, dispatch}) {
@@ -56,4 +57,17 @@ LoginPage.propTypes = {
     requests: PropTypes.object.isRequired
 };
 
-export default React.memo(LoginPage);
+// Map state function to component props
+const mapStateToProps = (state) => ({
+    user: state.user,
+    errors: state.errors,
+    requests: state.requests
+});
+
+// Map dispatch function to component props
+const mapDispatchToProps = (dispatch) => ({
+    dispatch: (action) => { dispatch(action)}
+});
+
+// Connect component to Redux
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
