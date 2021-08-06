@@ -3,9 +3,7 @@ import {Link} from "react-router-dom";
 
 import '../assets/scss/error.scss';
 
-// Component
-function NotFoundPage() {
-    // Render
+const NotFoundPage = () => {
     return (
         <div id="notfound">
             <div className="notfound">
