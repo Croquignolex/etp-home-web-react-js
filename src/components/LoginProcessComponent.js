@@ -4,7 +4,7 @@ import React, {useEffect, useLayoutEffect, useState} from 'react';
 import FormInputComponent from "./FormInputComponent";
 import {storeResetErrorData} from "../redux/errors/actions";
 import {emitAttemptUserIdentification} from "../redux/user/actions";
-import {requestLoading, requestSucceeded} from "../functions/defaultFunctions";
+import {requestLoading, requestSucceeded} from "../functions/requestHelpers";
 
 // Component
 function LoginProcessComponent({requests, dispatch, handleIdentified}) {

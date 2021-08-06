@@ -1,4 +1,4 @@
 import urls from './urlConstants';
-import lazyLoading from './lazyLoadingConstants';
+import lazyLoadings from './lazyLoadingConstants';
 
-export default {urls, lazyLoading};
+export default {urls, lazyLoadings};

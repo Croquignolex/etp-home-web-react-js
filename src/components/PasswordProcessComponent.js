@@ -4,7 +4,7 @@ import React, {useLayoutEffect, useState} from 'react';
 import FormInputComponent from "./FormInputComponent";
 import FormButtonComponent from "./FormButtonComponent";
 import {storeResetErrorData} from "../redux/errors/actions";
-import {requestLoading} from "../functions/defaultFunctions";
+import {requestLoading} from "../functions/requestHelpers";
 import {emitAttemptUserAuthentication} from "../redux/user/actions";
 import DisabledFormInputComponent from "./DisabledFormInputComponent";
 

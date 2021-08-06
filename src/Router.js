@@ -13,8 +13,8 @@ const AppRoutes = ({history}) => {
         <ConnectedRouter history={history}>
             <Suspense fallback={<PageLoaderComponent />}>
                 <Switch>
-                    <Route exact path="/" component={constants.lazyLoading.LOGIN_PAGE} />
-                    <Route component={constants.lazyLoading.NOT_FOUND_PAGE} />
+                    <Route exact path="/" component={constants.lazyLoadings.LOGIN_PAGE} />
+                    <Route component={constants.lazyLoadings.NOT_FOUND_PAGE} />
                 </Switch>
             </Suspense>
         </ConnectedRouter>
