@@ -1,5 +1,4 @@
-import errors from './errors/reducer';
-import requests from './requests/reducer';
+import authentication from './authentication/reducers';
 
 // Combine all reducers
-export default {errors, requests};
+export default {authentication};
