@@ -1,22 +1,17 @@
-export const BASE_URL = 'http://127.0.0.1:3001';
-// export const BASE_URL = 'https://etp.moyo-industry.com';
-
-export const API_SERVER_URL = 'http://127.0.0.1/api';
-// export const API_SERVER_URL = 'https://etp-api.moyo-industry.com/public/api';
-
-export const ADMIN_ROLE_URL = 'http://127.0.0.1:3000';
-// export const ADMIN_ROLE_URL = 'https://etp-admin.moyo-industry.com';
-export const AGENT_ROLE_URL = 'http://127.0.0.1:3000';
-// export const AGENT_ROLE_URL = 'https://etp-agent.moyo-industry.com';
-export const MANAGER_ROLE_URL = 'http://127.0.0.1:3000';
-// export const MANAGER_ROLE_URL = 'https://etp-manager.moyo-industry.com';
-export const OVERSEER_ROLE_URL = 'http://127.0.0.1:3000';
-// export const OVERSEER_ROLE_URL = 'https://etp-overseer.moyo-industry.com';
-export const RESOURCE_ROLE_URL = 'http://127.0.0.1:3000';
-// export const RESOURCE_ROLE_URL = 'https://etp-resource.moyo-industry.com';
-export const COLLECTOR_ROLE_URL = 'http://127.0.0.1:3000';
-// export const COLLECTOR_ROLE_URL = 'https://etp-collector.moyo-industry.com';
-export const ACCOUNTANT_ROLE_URL = 'http://127.0.0.1:3000';
-// export const ACCOUNTANT_ROLE_URL = 'https://etp-accountant.moyo-industry.com';
-export const SUPERVISOR_ROLE_URL = 'http://127.0.0.1:3000';
-// export const SUPERVISOR_ROLE_URL = 'https://etp-supervisor.moyo-industry.com';
+export default {
+    // App url
+    APP: process.env.REACT_APP_URL,
+    // Api base url
+    API: process.env.REACT_APP_API_BASE_URL,
+    // Redirected profile app urls
+    PROFILE: {
+        ADMIN: process.env.REACT_APP_ADMIN_APP_URL,
+        AGENT: process.env.REACT_APP_AGENT_APP_URL,
+        MANAGER: process.env.REACT_APP_MANAGER_APP_URL,
+        OVERSEER: process.env.REACT_APP_OVERSEER_APP_URL,
+        RESOURCE: process.env.REACT_APP_RESOURCE_APP_URL,
+        COLLECTOR: process.env.REACT_APP_COLLECTOR_APP_URL,
+        ACCOUNTANT: process.env.REACT_APP_ACCOUNTANT_APP_URL,
+        SUPERVISOR: process.env.REACT_APP_SUPERVISOR_APP_URL,
+    }
+}
