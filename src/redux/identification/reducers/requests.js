@@ -11,16 +11,16 @@ export default {
         let nextState;
         switch (action.type) {
 
-            // Resolve event to set authentication init request store data
-            case actions.requests.STORE_ATTEMPT_USER_AUTHENTICATION_REQUEST_INIT:
+            // Resolve event to set identification init request store data
+            case actions.requests.STORE_ATTEMPT_USER_IDENTIFICATION_REQUEST_INIT:
                 nextState = helpers.requests.requestInitValue();
                 return nextState || state;
-            // Resolve event to set authentication failed request store data
-            case actions.requests.STORE_ATTEMPT_USER_AUTHENTICATION_REQUEST_FAILED:
+            // Resolve event to set identification failed request store data
+            case actions.requests.STORE_ATTEMPT_USER_IDENTIFICATION_REQUEST_FAILED:
                 nextState = helpers.requests.requestFailedValue();
                 return nextState || state;
-            // Resolve event to set authentication failed request store data
-            case actions.requests.STORE_ATTEMPT_USER_AUTHENTICATION_REQUEST_SUCCEEDED:
+            // Resolve event to set identification failed request store data
+            case actions.requests.STORE_ATTEMPT_USER_IDENTIFICATION_REQUEST_SUCCEEDED:
                 nextState = helpers.requests.requestSucceededValue();
                 return nextState || state;
 
