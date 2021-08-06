@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
-import AppRoutes from './router';
+import AppRoutes from './Router';
 import { store, history } from "./redux/store";
 import * as serviceWorker from './serviceWorker';
 

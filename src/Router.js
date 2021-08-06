@@ -11,7 +11,7 @@ import PageLoaderComponent from "./sharedComponents/PageLoaderComponent";
 const AppRoutes = ({history}) => {
     return (
         <ConnectedRouter history={history}>
-            <Suspense  fallback={<PageLoaderComponent />}>
+            <Suspense fallback={<PageLoaderComponent />}>
                 <Switch>
                     <Route exact path="/" component={constants.lazyLoading.LOGIN_PAGE} />
                     <Route component={constants.lazyLoading.NOT_FOUND_PAGE} />
