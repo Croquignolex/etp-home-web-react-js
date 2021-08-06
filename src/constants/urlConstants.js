@@ -14,4 +14,4 @@ export default {
         ACCOUNTANT: process.env.REACT_APP_ACCOUNTANT_APP_URL,
         SUPERVISOR: process.env.REACT_APP_SUPERVISOR_APP_URL,
     }
-}
+};

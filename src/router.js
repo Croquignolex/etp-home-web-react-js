@@ -1,12 +1,11 @@
-import React, {lazy, Suspense} from 'react';
+import React, {Suspense} from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 
-import './assets/scss/loader.scss';
-import PageLoaderComponent from "./components/PageLoaderComponent";
+import constants from './constants';
 
-const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
-const LoginPage = lazy(() => import('./containers/LoginContainer'));
+import './assets/scss/loader.scss';
+import PageLoaderComponent from "./sharedComponents/PageLoaderComponent";
 
 // Component
 const AppRoutes = ({history}) => {
@@ -14,8 +13,8 @@ const AppRoutes = ({history}) => {
         <ConnectedRouter history={history}>
             <Suspense  fallback={<PageLoaderComponent />}>
                 <Switch>
-                    <Route exact path="/" component={LoginPage} />
-                    <Route component={NotFoundPage} />
+                    <Route exact path="/" component={constants.lazyLoading.LOGIN_PAGE} />
+                    <Route component={constants.lazyLoading.NOT_FOUND_PAGE} />
                 </Switch>
             </Suspense>
         </ConnectedRouter>
