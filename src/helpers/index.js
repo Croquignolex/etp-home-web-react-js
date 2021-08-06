@@ -1,3 +1,4 @@
+import xhr from './xhrHelpers';
 import requests from './requestHelpers';
 
-export default {requests};
+export default {xhr, requests};
