@@ -1,4 +1,3 @@
-import thunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga';
 import { createBrowserHistory } from 'history';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
@@ -11,7 +10,7 @@ import reducers from '../redux/reducers';
 const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
 const routeMiddleware = routerMiddleware(history);
-const middleware = [thunk, sagaMiddleware, routeMiddleware];
+const middleware = [sagaMiddleware, routeMiddleware];
 
 // Necessary to apply on DOM interactions
 const composeEnhancers =
