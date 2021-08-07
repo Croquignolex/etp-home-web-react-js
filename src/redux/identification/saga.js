@@ -2,6 +2,7 @@ import { all, takeLatest, put, fork, call } from 'redux-saga/effects'
 
 import actions from "./actions";
 import helpers from "../../helpers"
+import constants from "../../constants"
 
 // Attempt user identification from API
 export function* emitAttemptUserIdentification() {
@@ -10,13 +11,12 @@ export function* emitAttemptUserIdentification() {
             // Fire event for request init
             yield put(actions.requests.storeAttemptUserIdentificationRequestInit());
             // API call
-            yield call(helpers.xhr.apiPostRequest, `${API_SERVER_URL}/identification`, {phone});
+            const apiResponse = yield call(helpers.xhr.apiPostRequest, constants.urls.IDENTIFICATION, {phone});
             // Fire event for request succeeded
-            yield put(actions.requests.storeAttemptUserIdentificationRequestSucceeded());
+            yield put(actions.requests.storeAttemptUserIdentificationRequestSucceeded({message: apiResponse.message}));
         } catch (message) {
             // Fire event for request failed
-            yield put(actions.requests.storeAttemptUserIdentificationRequestFailed());
-            yield put(storeSetErrorData({message}));
+            yield put(actions.requests.storeAttemptUserIdentificationRequestFailed({message}));
         }
     });
 }

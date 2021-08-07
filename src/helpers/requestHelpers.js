@@ -19,7 +19,7 @@ export default {
 
     // Init value for a request
     requestInitValue() {
-        return {failed: false, loading: true, succeeded: false, message: ""}
+        return {failed: false, loading: true, succeeded: false, message: ''}
     },
 
     // Failed value for a request

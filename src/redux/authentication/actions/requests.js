@@ -12,11 +12,13 @@ export default {
         type: STORE_ATTEMPT_USER_AUTHENTICATION_REQUEST_INIT
     }),
     // Set failed data into store
-    storeAttemptUserAuthenticationRequestFailed: () => ({
+    storeAttemptUserAuthenticationRequestFailed: ({message}) => ({
+        message,
         type: STORE_ATTEMPT_USER_AUTHENTICATION_REQUEST_FAILED
     }),
     // Set success data into store
-    storeAttemptUserAuthenticationRequestSucceeded: () => ({
+    storeAttemptUserAuthenticationRequestSucceeded: ({message}) => ({
+        message,
         type: STORE_ATTEMPT_USER_AUTHENTICATION_REQUEST_SUCCEEDED
     }),
 }

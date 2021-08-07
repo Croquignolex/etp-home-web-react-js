@@ -12,11 +12,13 @@ export default {
         type: STORE_ATTEMPT_USER_IDENTIFICATION_REQUEST_INIT
     }),
     // Set failed data into store
-    storeAttemptUserIdentificationRequestFailed: () => ({
+    storeAttemptUserIdentificationRequestFailed: ({message}) => ({
+        message,
         type: STORE_ATTEMPT_USER_IDENTIFICATION_REQUEST_FAILED
     }),
     // Set success data into store
-    storeAttemptUserIdentificationRequestSucceeded: () => ({
+    storeAttemptUserIdentificationRequestSucceeded: ({message}) => ({
+        message,
         type: STORE_ATTEMPT_USER_IDENTIFICATION_REQUEST_SUCCEEDED
     }),
 }

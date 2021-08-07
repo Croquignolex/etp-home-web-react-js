@@ -1,8 +1,8 @@
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 export default {
     // App url
     APP: process.env.REACT_APP_URL,
-    // Api base url
-    API: process.env.REACT_APP_API_BASE_URL,
     // Redirected profile app urls
     PROFILE: {
         ADMIN: process.env.REACT_APP_ADMIN_APP_URL,
@@ -13,5 +13,9 @@ export default {
         COLLECTOR: process.env.REACT_APP_COLLECTOR_APP_URL,
         ACCOUNTANT: process.env.REACT_APP_ACCOUNTANT_APP_URL,
         SUPERVISOR: process.env.REACT_APP_SUPERVISOR_APP_URL,
-    }
+    },
+    // Identification
+    IDENTIFICATION: `${API_BASE_URL}/identification`,
+    // Authentication
+    AUTHENTICATION: `${API_BASE_URL}/identification`
 };

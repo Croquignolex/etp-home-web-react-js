@@ -3,7 +3,7 @@ import helpers from "../../../helpers";
 
 // Authentication partial store
 const initialState = {
-    failed: false, loading: false, succeeded: false
+    failed: false, loading: false, succeeded: false, message: ''
 };
 
 export default {
@@ -17,11 +17,11 @@ export default {
                 return nextState || state;
             // Resolve event to set identification failed request store data
             case actions.requests.STORE_ATTEMPT_USER_IDENTIFICATION_REQUEST_FAILED:
-                nextState = helpers.requests.requestFailedValue();
+                nextState = helpers.requests.requestFailedValue(action.message);
                 return nextState || state;
             // Resolve event to set identification failed request store data
             case actions.requests.STORE_ATTEMPT_USER_IDENTIFICATION_REQUEST_SUCCEEDED:
-                nextState = helpers.requests.requestSucceededValue();
+                nextState = helpers.requests.requestSucceededValue(action.message);
                 return nextState || state;
 
             // Unknown action
