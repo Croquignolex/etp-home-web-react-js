@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 
 import ErrorAlertComponent from "../../sharedComponents/ErrorAlertComponent";
 
-const LoginPage = ({authenticationData, identificationRequest, authenticationRequest, dispatch}) => {
+const LoginPage = ({authenticationData, identificationData, identificationRequest, authenticationRequest, dispatch}) => {
     return (
         <div className="auth-home">
             <div className="login-box">
@@ -18,8 +18,7 @@ const LoginPage = ({authenticationData, identificationRequest, authenticationReq
                         {<ErrorAlertComponent request={identificationRequest} />}
                         {<ErrorAlertComponent request={authenticationRequest} />}
                         <div className="text-center">
-                            {/* Input */}
-                            {identified
+                            {identificationData.isIdentify
                                 ? <PasswordProcessComponent requests={requests} dispatch={dispatch} login={login} />
                                 : <LoginProcessComponent requests={requests} dispatch={dispatch} handleIdentified={handleIdentified} />
                             }
@@ -42,12 +41,14 @@ const LoginPage = ({authenticationData, identificationRequest, authenticationReq
 LoginPage.propTypes = {
     dispatch: PropTypes.func.isRequired,
     authenticationData: PropTypes.object.isRequired,
+    identificationData: PropTypes.object.isRequired,
     identificationRequest: PropTypes.object.isRequired,
     authenticationRequest: PropTypes.object.isRequired,
 };
 
 // Map state function to component props
 const mapStateToProps = (state) => ({
+    identificationData: state.authentication.cores,
     authenticationData: state.authentication.cores,
     identificationRequest: state.identification.requests,
     authenticationRequest: state.authentication.requests,
