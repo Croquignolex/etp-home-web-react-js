@@ -1,23 +1,10 @@
+import React from 'react';
 import PropTypes from "prop-types";
-import React, {useState} from 'react';
-
-import ErrorAlertComponent from "../components/ErrorAlertComponent";
-import LoginProcessComponent from "../components/LoginProcessComponent";
-import PasswordProcessComponent from "../components/PasswordProcessComponent";
 import {connect} from "react-redux";
 
-// Component
-function LoginPage({errors, requests, dispatch}) {
-    // Local state
-    const [login, setLogin] = useState('');
-    const [identified, setIdentified] = useState(false);
+import ErrorAlertComponent from "../../sharedComponents/ErrorAlertComponent";
 
-    const handleIdentified = (identifiedData, loginData) => {
-        setIdentified(identifiedData)
-        setLogin(loginData)
-    }
-
-    // Render
+const LoginPage = ({authenticationData, identificationRequest, authenticationRequest, dispatch}) => {
     return (
         <div className="auth-home">
             <div className="login-box">
@@ -28,7 +15,8 @@ function LoginPage({errors, requests, dispatch}) {
                 <div className="card no-shadow">
                     <div className="card-body login-card-body">
                         {/* Error message */}
-                        {errors.show && <ErrorAlertComponent message={errors.message} />}
+                        {<ErrorAlertComponent request={identificationRequest} />}
+                        {<ErrorAlertComponent request={authenticationRequest} />}
                         <div className="text-center">
                             {/* Input */}
                             {identified
@@ -52,16 +40,17 @@ function LoginPage({errors, requests, dispatch}) {
 
 // Prop types to ensure destroyed props data type
 LoginPage.propTypes = {
-    errors: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
-    requests: PropTypes.object.isRequired
+    authenticationData: PropTypes.object.isRequired,
+    identificationRequest: PropTypes.object.isRequired,
+    authenticationRequest: PropTypes.object.isRequired,
 };
 
 // Map state function to component props
 const mapStateToProps = (state) => ({
-    user: state.user,
-    errors: state.errors,
-    requests: state.requests
+    authenticationData: state.authentication.cores,
+    identificationRequest: state.identification.requests,
+    authenticationRequest: state.authentication.requests,
 });
 
 // Map dispatch function to component props

@@ -1,6 +1,7 @@
 import React, {Suspense} from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
+import {NotificationContainer} from "react-notifications";
 
 import constants from './constants';
 
@@ -11,6 +12,7 @@ import PageLoaderComponent from "./sharedComponents/PageLoaderComponent";
 const AppRoutes = ({history}) => {
     return (
         <ConnectedRouter history={history}>
+            <NotificationContainer />
             <Suspense fallback={<PageLoaderComponent />}>
                 <Switch>
                     <Route exact path="/" component={constants.lazyLoadings.LOGIN_PAGE} />
