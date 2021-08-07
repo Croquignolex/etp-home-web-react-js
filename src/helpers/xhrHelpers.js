@@ -7,6 +7,7 @@ axios.interceptors.request.use(config => {
 }, error => Promise.reject(error));
 
 export default {
+    // Post verb request to api
     apiPostRequest: (url, data = {}) => {
         return new Promise((resolve, reject) => {
             axios.post(url, data)

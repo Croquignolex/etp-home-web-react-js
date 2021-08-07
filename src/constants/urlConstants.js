@@ -17,5 +17,5 @@ export default {
     // Identification
     IDENTIFICATION: `${API_BASE_URL}/identification`,
     // Authentication
-    AUTHENTICATION: `${API_BASE_URL}/identification`
+    AUTHENTICATION: `${API_BASE_URL}/login`
 };
