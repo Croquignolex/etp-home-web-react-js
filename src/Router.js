@@ -6,7 +6,7 @@ import {NotificationContainer} from "react-notifications";
 import constants from './constants';
 
 import './assets/scss/loader.scss';
-import PageLoaderComponent from "./sharedComponents/PageLoaderComponent";
+import PageLoaderComponent from "./shared/PageLoader";
 
 // Component
 const AppRoutes = ({history}) => {

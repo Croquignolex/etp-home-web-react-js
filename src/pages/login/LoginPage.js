@@ -2,7 +2,10 @@ import React from 'react';
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
-import ErrorAlertComponent from "../../sharedComponents/ErrorAlertComponent";
+import LoginProcess from "./LoginProcess";
+import PasswordProcess from "./PasswordProcess";
+import ErrorAlertComponent from "../../shared/ErrorAlert";
+import helpers from "../../helpers"
 
 const LoginPage = ({authenticationData, identificationData, identificationRequest, authenticationRequest, dispatch}) => {
     return (
@@ -19,8 +22,13 @@ const LoginPage = ({authenticationData, identificationData, identificationReques
                         {<ErrorAlertComponent request={authenticationRequest} />}
                         <div className="text-center">
                             {identificationData.isIdentify
-                                ? <PasswordProcessComponent requests={requests} dispatch={dispatch} login={login} />
-                                : <LoginProcessComponent requests={requests} dispatch={dispatch} handleIdentified={handleIdentified} />
+                                ? (
+                                    <PasswordProcess
+                                        processing={helpers.requests.requestLoading(authenticationRequest)}
+                                        dispatch={dispatch}
+                                        login={login} />
+                                )
+                                : <LoginProcess requests={identificationRequest} dispatch={dispatch} handleIdentified={handleIdentified} />
                             }
                         </div>
                     </div>

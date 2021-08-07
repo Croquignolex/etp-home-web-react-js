@@ -2,7 +2,7 @@ import React  from 'react';
 import PropTypes from 'prop-types';
 
 // Component
-function DisabledFormInputComponent({val}) {
+function DisabledFormInput({val}) {
     // Render
     return (
         <>
@@ -20,8 +20,8 @@ function DisabledFormInputComponent({val}) {
 }
 
 // Prop types to ensure destroyed props data type
-DisabledFormInputComponent.propTypes = {
+DisabledFormInput.propTypes = {
     val: PropTypes.string.isRequired,
 };
 
-export default React.memo(DisabledFormInputComponent);
+export default React.memo(DisabledFormInput);

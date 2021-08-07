@@ -4,7 +4,7 @@ import {Alert} from "react-bootstrap";
 
 import helpers from "../helpers"
 
-const ErrorAlertComponent = ({request}) => {
+const ErrorAlert = ({request}) => {
     const canShow = helpers.requests.requestFailed(request);
 
     // Play sound
@@ -16,8 +16,8 @@ const ErrorAlertComponent = ({request}) => {
 }
 
 // Prop types to ensure destroyed props data type
-ErrorAlertComponent.propTypes = {
+ErrorAlert.propTypes = {
     request: PropTypes.object.isRequired
 };
 
-export default React.memo(ErrorAlertComponent);
+export default React.memo(ErrorAlert);
