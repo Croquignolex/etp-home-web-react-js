@@ -15,7 +15,7 @@ const LoginPage = () => {
             <div className="login-box">
                 {/* Logo */}
                 <div className="login-logo">
-                    <span><img alt="..." width="100" src={require('../assets/images/logo.png')} /></span>
+                    <span><img alt="..." width="100" src={require('../../assets/images/logo.png')} /></span>
                 </div>
                 <div className="card no-shadow">
                     <div className="card-body login-card-body">

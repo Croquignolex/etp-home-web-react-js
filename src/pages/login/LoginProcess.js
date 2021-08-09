@@ -16,7 +16,7 @@ const LoginProcessComponent = () => {
                 handleInput={handleLoginInput}
                 inputEnable={!identificationRequestProcessing}
             />
-            {identificationRequestProcessing && <img width={70} alt='loading...' src={require('../assets/images/spinner-dark.svg')} />}
+            {identificationRequestProcessing && <img width={70} alt='loading...' src={require('../../assets/images/spinner-dark.svg')} />}
         </>
     )
 }
