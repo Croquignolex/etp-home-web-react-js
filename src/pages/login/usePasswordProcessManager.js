@@ -1,12 +1,17 @@
 import React, {useState} from 'react';
+import { useDispatch, useSelector } from "react-redux";
 
-import actions from "../../redux/authentication/actions";
-import constants from "../../constants";
 import helpers from "../../helpers";
+import constants from "../../constants";
+import actions from "../../redux/authentication/actions";
 
-export const PasswordProcessManager = ({dispatch, login}) => {
+export const usePasswordProcessManager = () => {
     // Local state
     const [password, setPassword] = useState(constants.generals.DEFAULT_INPUT);
+
+    // Redux
+    const dispatch = useDispatch();
+    const login = useSelector(state => state.identification.login);
 
     // Handle password input
     const handlePasswordInput = (data) => {

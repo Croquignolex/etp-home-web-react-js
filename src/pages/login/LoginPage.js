@@ -2,12 +2,17 @@ import React from 'react';
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
+import helpers from "../../helpers";
 import LoginProcess from "./LoginProcess";
+import DomTitle from "../../shared/DomTitle";
 import PasswordProcess from "./PasswordProcess";
+import {useLoginManager} from "./useLoginManager";
 import ErrorAlertComponent from "../../shared/ErrorAlert";
-import helpers from "../../helpers"
 
 const LoginPage = ({authenticationData, identificationData, identificationRequest, authenticationRequest, dispatch}) => {
+    // Component custom hooks
+    const {login} = useLoginManager();
+
     return (
         <div className="auth-home">
             <div className="login-box">
@@ -23,18 +28,23 @@ const LoginPage = ({authenticationData, identificationData, identificationReques
                         <div className="text-center">
                             {identificationData.isIdentify
                                 ? (
-                                    <PasswordProcess
-                                        processing={helpers.requests.requestLoading(authenticationRequest)}
-                                        dispatch={dispatch}
-                                        login={login}
-                                    />
+                                    <div>
+                                       <DomTitle title={"Authentification - MMAC"} />
+                                        <PasswordProcess
+                                            processing={helpers.requests.requestLoading(authenticationRequest)}
+                                            login={login}
+                                        />
+                                    </div>
                                 )
                                 : (
-                                    <LoginProcess
-                                        requests={identificationRequest}
-                                        dispatch={dispatch}
-                                        handleIdentified={handleIdentified}
-                                    />
+                                    <div>
+                                        <DomTitle title={"Authentification - MMAC"} />
+                                        <LoginProcess
+                                            requests={identificationRequest}
+                                            dispatch={dispatch}
+                                            handleIdentified={handleIdentified}
+                                        />
+                                    </div>
                                 )
                             }
                         </div>

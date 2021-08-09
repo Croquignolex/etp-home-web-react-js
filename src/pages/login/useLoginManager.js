@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-export const LoginManager = () => {
+export const useLoginManager = () => {
     // Local state
     const [login, setLogin] = useState('');
     const [identified, setIdentified] = useState(false);

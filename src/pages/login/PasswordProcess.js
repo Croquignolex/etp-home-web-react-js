@@ -1,21 +1,15 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import React, {useLayoutEffect} from 'react';
 
 import FormInput from "../../shared/form/FormInput";
 import FormButton from "../../shared/form/FormButton";
 import DisabledFormInput from "../../shared/form/DisabledFormInput";
-import {PasswordProcessManager} from "./PasswordProcessManager";
+import {usePasswordProcessManager} from "./usePasswordProcessManager";
 
-function PasswordProcessComponent({processing, dispatch, login}) {
-    // Component manager data
-    const {handlePasswordInput, handleAuthentication} = PasswordProcessManager({dispatch, login});
+function PasswordProcessComponent({processing}) {
+    // Component Hooks
+    const {handlePasswordInput, handleAuthentication} = usePasswordProcessManager();
 
-    // local effects
-    useLayoutEffect(() => {
-        document.title = "Authentification - MMAC";
-    }, []);
-
-    // Render
     return (
         <form name="form" onSubmit={handleAuthentication}>
             <div className="mb-3">
@@ -38,9 +32,13 @@ function PasswordProcessComponent({processing, dispatch, login}) {
 
 // Prop types to ensure destroyed props data type
 PasswordProcessComponent.propTypes = {
-    login: PropTypes.string.isRequired,
-    dispatch: PropTypes.func.isRequired,
     processing: PropTypes.bool.isRequired
 };
 
+// Map dispatch function to component props
+const mapDispatchToProps = (dispatch) => ({
+    dispatch: (action) => { dispatch(action) }
+});
+
+// Connect component to Redux
 export default React.memo(PasswordProcessComponent);
