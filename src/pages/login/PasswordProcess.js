@@ -1,14 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import FormInput from "../../shared/form/FormInput";
 import FormButton from "../../shared/form/FormButton";
 import DisabledFormInput from "../../shared/form/DisabledFormInput";
 import {usePasswordProcessManager} from "./usePasswordProcessManager";
 
-function PasswordProcessComponent({processing}) {
+function PasswordProcessComponent() {
     // Component Hooks
-    const {login, handlePasswordInput, handleAuthentication} = usePasswordProcessManager();
+    const {login, handlePasswordInput, handleAuthentication, authenticationRequestProcessing} = usePasswordProcessManager();
 
     return (
         <form name="form" onSubmit={handleAuthentication}>
@@ -18,22 +17,17 @@ function PasswordProcessComponent({processing}) {
             <FormInput
                 inputType="password"
                 inputIcon="fas fa-lock"
-                inputEnable={!processing}
                 inputPlaceholder="Mot de passe"
                 handleInput={handlePasswordInput}
+                inputEnable={!authenticationRequestProcessing}
             />
             <div className="row mt-3">
                 <div className="col-6" />
-                <FormButton processing={processing} />
+                <FormButton processing={authenticationRequestProcessing} />
             </div>
         </form>
     )
 }
-
-// Prop types to ensure destroyed props data type
-PasswordProcessComponent.propTypes = {
-    processing: PropTypes.bool.isRequired
-};
 
 // Connect component to Redux
 export default React.memo(PasswordProcessComponent);

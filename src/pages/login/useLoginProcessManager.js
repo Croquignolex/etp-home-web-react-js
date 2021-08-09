@@ -11,8 +11,7 @@ export const useLoginProcessManager = () => {
 
     // Redux
     const dispatch = useDispatch();
-    const identificationRequest = useSelector(state => state.identification.requests);
-    const identificationRequestProcessing = helpers.requests.requestLoading(identificationRequest);
+    const identificationRequestProcessing = useSelector(state => helpers.requests.requestLoading(state.identification.requests));
 
     // Handle login input
     const handleLoginInput = (data) => {

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import {shallowEqual, useDispatch, useSelector} from "react-redux";
 
 import helpers from "../../helpers";
 import constants from "../../constants";
@@ -11,7 +11,10 @@ export const usePasswordProcessManager = () => {
 
     // Redux
     const dispatch = useDispatch();
-    const login = useSelector(state => state.identification.login);
+    const {login, authenticationRequestProcessing} = useSelector(state => ({
+        login: state.identification.cores.login,
+        authenticationRequestProcessing: helpers.requests.requestLoading(state.authentication.requests)
+    }), shallowEqual);
 
     // Handle password input
     const handlePasswordInput = (data) => {
@@ -35,5 +38,5 @@ export const usePasswordProcessManager = () => {
         else helpers.sounds.playWarningSound();
     }
 
-   return {login, handlePasswordInput, handleAuthentication}
+   return {login, authenticationRequestProcessing, handlePasswordInput, handleAuthentication}
 }

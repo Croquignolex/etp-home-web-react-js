@@ -1,15 +1,13 @@
 import React from 'react';
-import {useSelector} from "react-redux";
+import {useSelector, shallowEqual} from "react-redux";
 
 export const useLoginPageManager = () => {
     // Redux
-    const identificationRequest = useSelector(state => state.identification.requests);
-    const authenticationRequest = useSelector(state => state.authentication.requests);
-    const showPasswordProcess = useSelector(state => state.identification.cores.isIdentify);
+    const {identificationRequest, showPasswordProcess, authenticationRequest} = useSelector(state => ({
+        identificationRequest: state.identification.requests,
+        authenticationRequest: state.authentication.requests,
+        showPasswordProcess: state.identification.cores.isIdentify
+    }), shallowEqual);
 
     return {showPasswordProcess, identificationRequest, authenticationRequest};
-
-
-    // const identificationRequestProcessing = helpers.requests.requestLoading(identificationRequest);
-    //     const authenticationRequestProcessing = helpers.requests.requestLoading(authenticationRequest);
 }
