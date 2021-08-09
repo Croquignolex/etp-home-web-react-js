@@ -1,20 +1,18 @@
 import React, {useState} from 'react';
 
+import helpers from "../../helpers";
 import constants from "../../constants";
+import {useDispatch, useSelector} from "react-redux";
 import actions from "../../redux/identification/actions";
 
 export const useLoginProcessManager = () => {
     // Local state
     const [phone, setPhone] = useState(constants.generals.DEFAULT_INPUT);
 
-    // local effects
-    /*useEffect(() => {
-        // Identified user if phone number check is successful
-        if(requestSucceeded(requests)) {
-            handleIdentified(true, phone)
-        }
-        // eslint-disable-next-line
-    }, [requests]);*/
+    // Redux
+    const dispatch = useDispatch();
+    const identificationRequest = useSelector(state => state.identification.requests);
+    const identificationRequestProcessing = helpers.requests.requestLoading(identificationRequest);
 
     // Handle login input
     const handleLoginInput = (data) => {
@@ -23,8 +21,8 @@ export const useLoginProcessManager = () => {
         // Set password data
         setPhone({...phone, data});
         // Fire when user phone reached 9 characters
-        (data.length === 9) && dispatch(actions.middlewares.emitAttemptUserIdentification({phone: data}));
+        (data.length === 9) && dispatch(actions.middlewares.emitAttemptUserIdentification({login: data}));
     }
 
-   return {handleLoginInput}
+   return {handleLoginInput, identificationRequestProcessing}
 }
