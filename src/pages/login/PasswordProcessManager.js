@@ -1,21 +1,24 @@
 import React, {useLayoutEffect, useState} from 'react';
 
+import actions from "../../redux/authentication/actions"
+import constants from "../../constants"
+
 export const PasswordProcessManager = () => {
     // Local state
-    const [password, setPassword] = useState('');
+    const [password, setPassword] = useState(constants.generals.DEFAULT_INPUT);
 
-    // Handle phone input
-    const handleInput = (data) => {
-        dispatch(storeResetErrorData());
-        setPassword(data);
+    // Handle password input
+    const handlePasswordInput = (dispatch, data) => {
+        dispatch(actions.requests.storeAttemptUserAuthenticationRequestReset());
+        setPassword({...password, data});
     }
 
     // Form submission
-    const handleSubmit = (e) => {
+   /* const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(storeResetErrorData());
         dispatch(emitAttemptUserAuthentication({phone: login, password}));
-    }
+    }*/
 
-   return {}
+   return {password, handlePasswordInput}
 }

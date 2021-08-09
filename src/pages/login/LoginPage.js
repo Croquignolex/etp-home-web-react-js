@@ -26,9 +26,16 @@ const LoginPage = ({authenticationData, identificationData, identificationReques
                                     <PasswordProcess
                                         processing={helpers.requests.requestLoading(authenticationRequest)}
                                         dispatch={dispatch}
-                                        login={login} />
+                                        login={login}
+                                    />
                                 )
-                                : <LoginProcess requests={identificationRequest} dispatch={dispatch} handleIdentified={handleIdentified} />
+                                : (
+                                    <LoginProcess
+                                        requests={identificationRequest}
+                                        dispatch={dispatch}
+                                        handleIdentified={handleIdentified}
+                                    />
+                                )
                             }
                         </div>
                     </div>
@@ -63,9 +70,13 @@ const mapStateToProps = (state) => ({
 });
 
 // Map dispatch function to component props
-const mapDispatchToProps = (dispatch) => ({
-    dispatch: (action) => { dispatch(action)}
-});
+const mapDispatchToProps = {
+    login,
+    register
+}
+// const mapDispatchToProps = (dispatch) => ({
+//     dispatch: (action) => { dispatch(action) }
+// });
 
 // Connect component to Redux
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

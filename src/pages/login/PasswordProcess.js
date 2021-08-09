@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
 import React, {useLayoutEffect} from 'react';
+
 import FormButton from "../../shared/form/FormButton";
+import DisabledFormInput from "../../shared/form/DisabledFormInput";
+import FormInput from "../../shared/form/FormInput";
 
 function PasswordProcessComponent({processing, dispatch, login}) {
     // local effects
@@ -11,11 +14,13 @@ function PasswordProcessComponent({processing, dispatch, login}) {
     // Render
     return (
         <form name="form" onSubmit={handleSubmit}>
-            <div className="mb-3"><DisabledFormInputComponent val={login} /></div>
-            <FormInputComponent
+            <div className="mb-3">
+                <DisabledFormInput val={login} />
+            </div>
+            <FormInput
+                inputType="password"
                 inputIcon="fas fa-lock"
                 inputPlaceholder="Mot de passe"
-                inputType="password"
                 inputEnable={!processing}
                 handleInput={handleInput}
             />

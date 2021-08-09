@@ -1,33 +1,23 @@
 import React  from 'react';
 import PropTypes from 'prop-types';
 
-// Component
-function FormInput({inputIcon, inputType, inputPlaceholder, inputEnable, handleInput}) {
-
-    // Handle input change
-    const handleInputChange = (e) => {
-        handleInput(e.target.value)
-    }
-
-    // Render
+const FormInput = ({inputIcon, inputType, inputPlaceholder, inputEnable, handleInput}) => {
     return (
-        <>
-            <div className="input-group">
-                <input autoFocus
-                       type={inputType}
-                       disabled={!inputEnable}
-                       className="form-control"
-                       onChange={handleInputChange}
-                       placeholder={inputPlaceholder}
-                />
-                {/* Icon */}
-                <div className="input-group-append">
-                    <div className="input-group-text">
-                        <span className={inputIcon} />
-                    </div>
+        <div className="input-group">
+            <input autoFocus
+                   type={inputType}
+                   disabled={!inputEnable}
+                   className="form-control"
+                   placeholder={inputPlaceholder}
+                   onChange={(e) => handleInput(e.target.value)}
+            />
+            {/* Icon */}
+            <div className="input-group-append">
+                <div className="input-group-text">
+                    <span className={inputIcon} />
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

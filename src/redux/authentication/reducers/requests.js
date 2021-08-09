@@ -23,6 +23,10 @@ export default {
             case actions.requests.STORE_ATTEMPT_USER_AUTHENTICATION_REQUEST_SUCCEEDED:
                 nextState = helpers.requests.requestSucceededValue(action.message);
                 return nextState || state;
+            // Resolve event to set authentication reset request store data
+            case actions.requests.STORE_ATTEMPT_USER_AUTHENTICATION_REQUEST_RESET:
+                nextState = initialState;
+                return nextState || state;
 
             // Unknown action
             default: return state;
