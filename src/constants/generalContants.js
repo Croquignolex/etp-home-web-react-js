@@ -1,4 +1,4 @@
 export default {
     // Default input
-    DEFAULT_INPUT: {data: '', message: '', isValid: true},
+    DEFAULT_INPUT: {data: '', errorMessage: '', isValid: true},
 };

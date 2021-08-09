@@ -1,11 +1,15 @@
 import PropTypes from 'prop-types';
 import React, {useLayoutEffect} from 'react';
 
+import FormInput from "../../shared/form/FormInput";
 import FormButton from "../../shared/form/FormButton";
 import DisabledFormInput from "../../shared/form/DisabledFormInput";
-import FormInput from "../../shared/form/FormInput";
+import {PasswordProcessManager} from "./PasswordProcessManager";
 
 function PasswordProcessComponent({processing, dispatch, login}) {
+    // Component manager data
+    const {handlePasswordInput, handleAuthentication} = PasswordProcessManager({dispatch, login});
+
     // local effects
     useLayoutEffect(() => {
         document.title = "Authentification - MMAC";
@@ -13,16 +17,16 @@ function PasswordProcessComponent({processing, dispatch, login}) {
 
     // Render
     return (
-        <form name="form" onSubmit={handleSubmit}>
+        <form name="form" onSubmit={handleAuthentication}>
             <div className="mb-3">
                 <DisabledFormInput val={login} />
             </div>
             <FormInput
                 inputType="password"
                 inputIcon="fas fa-lock"
-                inputPlaceholder="Mot de passe"
                 inputEnable={!processing}
-                handleInput={handleInput}
+                inputPlaceholder="Mot de passe"
+                handleInput={handlePasswordInput}
             />
             <div className="row mt-3">
                 <div className="col-6" />
