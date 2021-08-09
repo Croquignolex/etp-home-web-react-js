@@ -4,9 +4,8 @@ export default {
     EMIT_ATTEMPT_USER_AUTHENTICATION,
 
     // Emit user auth attempt
-    emitAttemptUserAuthentication: ({phone, password}) => ({
-        phone,
-        password,
+    emitAttemptUserAuthentication: ({login, password}) => ({
+        payload: {login, password},
         type: EMIT_ATTEMPT_USER_AUTHENTICATION
     })
 }

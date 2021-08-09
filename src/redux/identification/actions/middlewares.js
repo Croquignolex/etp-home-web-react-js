@@ -4,8 +4,8 @@ export default {
     EMIT_ATTEMPT_USER_IDENTIFICATION,
 
     // Emit user identification attempt
-    emitAttemptUserIdentification: ({phone}) => ({
-        phone,
+    emitAttemptUserIdentification: ({login}) => ({
+        payload: {login},
         type: EMIT_ATTEMPT_USER_IDENTIFICATION
     }),
 }

@@ -5,8 +5,7 @@ export default {
 
     // Put role and token into redux
     storeSetRoleAndTokenData: ({role, token}) => ({
-        role,
-        token,
+        payload: {role, token},
         type: STORE_SET_ROLE_AND_TOKEN_DATA
     })
 }

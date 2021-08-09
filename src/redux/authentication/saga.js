@@ -6,12 +6,13 @@ import constants from "../../constants"
 
 // Attempt user authentication from API
 export function* emitAttemptUserAuthentication() {
-    yield takeLatest(actions.middlewares.EMIT_ATTEMPT_USER_AUTHENTICATION, function*({phone, password}) {
+    yield takeLatest(actions.middlewares.EMIT_ATTEMPT_USER_AUTHENTICATION, function*({payload}) {
         try {
+            const {login, password} = payload;
             // Fire event for request init
             yield put(actions.requests.storeAttemptUserAuthenticationRequestInit());
             // API call
-            const apiResponse = yield call(helpers.xhr.apiPostRequest, constants.urls.AUTHENTICATION, {phone, password});
+            const apiResponse = yield call(helpers.xhr.apiPostRequest, constants.urls.AUTHENTICATION, {phone: login, password});
             const {role, token, message} = apiResponse;
             // Save data into redux
             yield put(actions.cores.storeSetRoleAndTokenData({role, token}));

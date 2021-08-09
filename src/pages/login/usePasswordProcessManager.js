@@ -35,5 +35,5 @@ export const usePasswordProcessManager = () => {
         else helpers.sounds.playWarningSound();
     }
 
-   return {handlePasswordInput, handleAuthentication}
+   return {login, handlePasswordInput, handleAuthentication}
 }

@@ -6,12 +6,15 @@ import constants from "../../constants"
 
 // Attempt user identification from API
 export function* emitAttemptUserIdentification() {
-    yield takeLatest(actions.middlewares.EMIT_ATTEMPT_USER_IDENTIFICATION, function*({phone}) {
+    yield takeLatest(actions.middlewares.EMIT_ATTEMPT_USER_IDENTIFICATION, function*({payload}) {
         try {
+            const {login} = payload;
             // Fire event for request init
             yield put(actions.requests.storeAttemptUserIdentificationRequestInit());
             // API call
-            const apiResponse = yield call(helpers.xhr.apiPostRequest, constants.urls.IDENTIFICATION, {phone});
+            const apiResponse = yield call(helpers.xhr.apiPostRequest, constants.urls.IDENTIFICATION, {phone: login});
+            // Set data
+            yield put(actions.cores.storeSetIdentifyData({login}));
             // Fire event for request succeeded
             yield put(actions.requests.storeAttemptUserIdentificationRequestSucceeded({message: apiResponse.message}));
         } catch (message) {

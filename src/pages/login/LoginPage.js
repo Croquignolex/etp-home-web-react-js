@@ -1,20 +1,14 @@
 import React from 'react';
-import PropTypes from "prop-types";
-import {connect} from "react-redux";
 
-import helpers from "../../helpers";
 import LoginProcess from "./LoginProcess";
 import DomTitle from "../../shared/DomTitle";
 import PasswordProcess from "./PasswordProcess";
 import {useLoginPageManager} from "./useLoginPageManager";
 import ErrorAlertComponent from "../../shared/ErrorAlert";
 
-const LoginPage = ({authenticationData, identificationData, identificationRequest, authenticationRequest, dispatch}) => {
+const LoginPage = () => {
     // Component custom hooks
-    const {login} = useLoginPageManager();
-
-    const identificationRequestProcessing = helpers.requests.requestLoading(identificationRequest);
-    const authenticationRequestProcessing = helpers.requests.requestLoading(authenticationRequest);
+    const {showPasswordProcess, identificationRequest, authenticationRequest} = useLoginPageManager();
 
     return (
         <div className="auth-home">
@@ -29,17 +23,17 @@ const LoginPage = ({authenticationData, identificationData, identificationReques
                         {<ErrorAlertComponent request={identificationRequest} />}
                         {<ErrorAlertComponent request={authenticationRequest} />}
                         <div className="text-center">
-                            {identificationData.isIdentify
+                            {showPasswordProcess
                                 ? (
                                     <>
                                         <DomTitle title={"Authentification - MMAC"} />
-                                        <PasswordProcess processing={authenticationRequestProcessing} />
+                                        <PasswordProcess />
                                     </>
                                 )
                                 : (
                                     <div>
                                         <DomTitle title={"Identification - MMAC"} />
-                                        <LoginProcess processing={identificationRequestProcessing} />
+                                        <LoginProcess />
                                     </div>
                                 )
                             }
@@ -58,27 +52,4 @@ const LoginPage = ({authenticationData, identificationData, identificationReques
     )
 }
 
-// Prop types to ensure destroyed props data type
-LoginPage.propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    authenticationData: PropTypes.object.isRequired,
-    identificationData: PropTypes.object.isRequired,
-    identificationRequest: PropTypes.object.isRequired,
-    authenticationRequest: PropTypes.object.isRequired,
-};
-
-// Map state function to component props
-const mapStateToProps = (state) => ({
-    identificationData: state.authentication.cores,
-    authenticationData: state.authentication.cores,
-    identificationRequest: state.identification.requests,
-    authenticationRequest: state.authentication.requests,
-});
-
-// Map dispatch function to component props
-const mapDispatchToProps = (dispatch) => ({
-    dispatch: (action) => { dispatch(action) }
-});
-
-// Connect component to Redux
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+export default React.memo(LoginPage);

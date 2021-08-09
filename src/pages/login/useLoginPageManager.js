@@ -1,15 +1,15 @@
-import React, {useState} from 'react';
+import React from 'react';
+import {useSelector} from "react-redux";
 
 export const useLoginPageManager = () => {
-    // Local state
-    const [login, setLogin] = useState('');
-    const [identified, setIdentified] = useState(false);
+    // Redux
+    const identificationRequest = useSelector(state => state.identification.requests);
+    const authenticationRequest = useSelector(state => state.authentication.requests);
+    const showPasswordProcess = useSelector(state => state.identification.cores.isIdentify);
 
-    const handleIdentified = (identifiedData, loginData) => {
-        setIdentified(identifiedData)
-        setLogin(loginData)
-    }
+    return {showPasswordProcess, identificationRequest, authenticationRequest};
 
-    // Render
-    return {login, identified};
+
+    // const identificationRequestProcessing = helpers.requests.requestLoading(identificationRequest);
+    //     const authenticationRequestProcessing = helpers.requests.requestLoading(authenticationRequest);
 }

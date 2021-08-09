@@ -12,7 +12,7 @@ export default {
 
             // Resolve event to set role and token store data
             case actions.cores.STORE_SET_ROLE_AND_TOKEN_DATA:
-                nextState = {role: action.role, token: action.token};
+                nextState = {role: action.payload.role, token: action.payload.token};
                 return nextState || state;
 
             // Unknown action

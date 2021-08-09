@@ -8,7 +8,7 @@ import {usePasswordProcessManager} from "./usePasswordProcessManager";
 
 function PasswordProcessComponent({processing}) {
     // Component Hooks
-    const {handlePasswordInput, handleAuthentication} = usePasswordProcessManager();
+    const {login, handlePasswordInput, handleAuthentication} = usePasswordProcessManager();
 
     return (
         <form name="form" onSubmit={handleAuthentication}>
