@@ -4,9 +4,9 @@ import {useSelector, shallowEqual} from "react-redux";
 export const useLoginPageManager = () => {
     // Redux
     const {identificationRequest, showPasswordProcess, authenticationRequest} = useSelector(state => ({
-        identificationRequest: state.identification.requests,
-        authenticationRequest: state.authentication.requests,
-        showPasswordProcess: state.identification.cores.isIdentify
+        identificationRequest: state.identificationRequests,
+        authenticationRequest: state.authenticationRequests,
+        showPasswordProcess: state.identificationCores.isIdentify
     }), shallowEqual);
 
     return {showPasswordProcess, identificationRequest, authenticationRequest};

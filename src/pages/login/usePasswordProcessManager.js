@@ -12,8 +12,8 @@ export const usePasswordProcessManager = () => {
     // Redux
     const dispatch = useDispatch();
     const {login, authenticationRequestProcessing} = useSelector(state => ({
-        login: state.identification.cores.login,
-        authenticationRequestProcessing: helpers.requests.requestLoading(state.authentication.requests)
+        login: state.identificationCores.login,
+        authenticationRequestProcessing: helpers.requests.requestLoading(state.authenticationRequests)
     }), shallowEqual);
 
     // Handle password input

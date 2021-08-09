@@ -1,5 +1,12 @@
-import authentication from './authentication/reducers';
-import identification from './identification/reducers';
+import authenticationCores from './authentication/reducers/cores';
+import identificationCores from './identification/reducers/cores';
+import authenticationRequests from './authentication/reducers/requests';
+import identificationRequests from './identification/reducers/requests';
 
 // Combine all reducers
-export default {authentication, identification};
+export default {
+    identificationCores,
+    authenticationCores,
+    authenticationRequests,
+    identificationRequests
+};
