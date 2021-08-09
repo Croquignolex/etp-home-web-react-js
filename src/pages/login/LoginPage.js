@@ -6,12 +6,12 @@ import helpers from "../../helpers";
 import LoginProcess from "./LoginProcess";
 import DomTitle from "../../shared/DomTitle";
 import PasswordProcess from "./PasswordProcess";
-import {useLoginManager} from "./useLoginManager";
+import {useLoginPageManager} from "./useLoginPageManager";
 import ErrorAlertComponent from "../../shared/ErrorAlert";
 
 const LoginPage = ({authenticationData, identificationData, identificationRequest, authenticationRequest, dispatch}) => {
     // Component custom hooks
-    const {login} = useLoginManager();
+    const {login} = useLoginPageManager();
 
     const identificationRequestProcessing = helpers.requests.requestLoading(identificationRequest);
     const authenticationRequestProcessing = helpers.requests.requestLoading(authenticationRequest);

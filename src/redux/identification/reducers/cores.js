@@ -1,9 +1,7 @@
 import actions from "../actions";
 
 // Authentication partial store
-const initialState = {
-    isIdentify: false
-};
+const initialState = {login: '', isIdentify: false};
 
 export default {
     reduce: (state = initialState, action) => {
@@ -12,7 +10,7 @@ export default {
 
             // Resolve event to set role and token store data
             case actions.cores.STORE_SET_IDENTIFY_DATA:
-                nextState = {isIdentify: true};
+                nextState = {isIdentify: true, login: action.payload.login};
                 return nextState || state;
 
             // Unknown action

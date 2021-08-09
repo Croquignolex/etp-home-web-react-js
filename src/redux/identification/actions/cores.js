@@ -4,7 +4,8 @@ export default {
     STORE_SET_IDENTIFY_DATA,
 
     // Put role and token into redux
-    storeSetIdentifyData: () => ({
+    storeSetIdentifyData: ({login}) => ({
+        payload: {login},
         type: STORE_SET_IDENTIFY_DATA
     })
 }
