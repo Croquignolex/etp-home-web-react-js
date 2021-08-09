@@ -13,6 +13,9 @@ const LoginPage = ({authenticationData, identificationData, identificationReques
     // Component custom hooks
     const {login} = useLoginManager();
 
+    const identificationRequestProcessing = helpers.requests.requestLoading(identificationRequest);
+    const authenticationRequestProcessing = helpers.requests.requestLoading(authenticationRequest);
+
     return (
         <div className="auth-home">
             <div className="login-box">
@@ -28,22 +31,15 @@ const LoginPage = ({authenticationData, identificationData, identificationReques
                         <div className="text-center">
                             {identificationData.isIdentify
                                 ? (
-                                    <div>
-                                       <DomTitle title={"Authentification - MMAC"} />
-                                        <PasswordProcess
-                                            processing={helpers.requests.requestLoading(authenticationRequest)}
-                                            login={login}
-                                        />
-                                    </div>
+                                    <>
+                                        <DomTitle title={"Authentification - MMAC"} />
+                                        <PasswordProcess processing={authenticationRequestProcessing} />
+                                    </>
                                 )
                                 : (
                                     <div>
-                                        <DomTitle title={"Authentification - MMAC"} />
-                                        <LoginProcess
-                                            requests={identificationRequest}
-                                            dispatch={dispatch}
-                                            handleIdentified={handleIdentified}
-                                        />
+                                        <DomTitle title={"Identification - MMAC"} />
+                                        <LoginProcess processing={identificationRequestProcessing} />
                                     </div>
                                 )
                             }

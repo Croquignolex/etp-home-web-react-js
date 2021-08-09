@@ -35,10 +35,5 @@ PasswordProcessComponent.propTypes = {
     processing: PropTypes.bool.isRequired
 };
 
-// Map dispatch function to component props
-const mapDispatchToProps = (dispatch) => ({
-    dispatch: (action) => { dispatch(action) }
-});
-
 // Connect component to Redux
 export default React.memo(PasswordProcessComponent);
