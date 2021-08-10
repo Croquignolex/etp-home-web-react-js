@@ -18,7 +18,7 @@ export const useLoginPageManager = () => {
     useEffect(() => {
         if(identificationRequestSucceeded) {
             NotificationManager.success(identificationRequest.message);
-            helpers.sounds.playInfoSound();
+            helpers.sounds.playSuccessSound();
         }
         // eslint-disable-next-line
     }, [identificationRequestSucceeded]);

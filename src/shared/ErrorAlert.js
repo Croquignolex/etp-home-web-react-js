@@ -8,7 +8,7 @@ const ErrorAlert = ({request}) => {
     const canShow = helpers.requests.requestFailed(request);
 
     // Play sound
-    canShow && helpers.sounds.playErrorSound();
+    canShow && helpers.sounds.playDangerSound();
 
     return (
         canShow && <Alert variant="danger" className='text-center mb-2'>{request.message}</Alert>
