@@ -47,7 +47,7 @@ export const usePasswordProcessManager = () => {
         // Reset error data
         errorReset();
         // Set password data
-        setPassword({...password, data});
+        setPassword({...constants.generals.DEFAULT_INPUT, data});
     }
 
     // Form submission
