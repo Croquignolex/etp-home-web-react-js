@@ -11,16 +11,24 @@ export const useLoginProcessManager = () => {
 
     // Redux
     const dispatch = useDispatch();
-    const identificationRequestProcessing = useSelector(state => helpers.requests.requestLoading(state.identification.requests));
+    const identificationRequest = useSelector(state => state.identification.requests);
+
+    const identificationRequestFailed = helpers.requests.requestFailed(identificationRequest);
+    const identificationRequestProcessing = helpers.requests.requestLoading(identificationRequest);
 
     // Handle login input
     const handleLoginInput = (data) => {
         // Reset error data
-        dispatch(actions.cores.storeAttemptUserIdentificationRequestReset());
+        errorReset();
         // Set password data
-        setPhone({...phone, data}); console.log(data.length);
+        setPhone({...phone, data});
         // Fire when user phone reached 9 characters
         (data.length === 9) && dispatch(actions.middlewares.emitAttemptUserIdentification({login: data}));
+    }
+
+    // Error reset
+    const errorReset = () => {
+        identificationRequestFailed && dispatch(actions.cores.storeAttemptUserIdentificationRequestReset());
     }
 
    return {handleLoginInput, identificationRequestProcessing}

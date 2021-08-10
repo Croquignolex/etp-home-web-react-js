@@ -11,15 +11,18 @@ export const usePasswordProcessManager = () => {
 
     // Redux
     const dispatch = useDispatch();
-    const {login, authenticationRequestProcessing} = useSelector(state => ({
+    const {login, authenticationRequest} = useSelector(state => ({
         login: state.identification.login,
-        authenticationRequestProcessing: helpers.requests.requestLoading(state.authentication.requests)
+        authenticationRequest: state.authentication.requests
     }), shallowEqual);
+
+    const authenticationRequestFailed = helpers.requests.requestFailed(authenticationRequest);
+    const authenticationRequestProcessing = helpers.requests.requestLoading(authenticationRequest);
 
     // Handle password input
     const handlePasswordInput = (data) => {
         // Reset error data
-        dispatch(actions.cores.storeAttemptUserAuthenticationRequestReset());
+        errorReset();
         // Set password data
         setPassword({...password, data});
     }
@@ -28,7 +31,7 @@ export const usePasswordProcessManager = () => {
     const handleAuthentication = (e) => {
         e.preventDefault();
         // Reset error data
-        dispatch(actions.cores.storeAttemptUserAuthenticationRequestReset());
+        errorReset();
         // Form input checker
         const _password = helpers.formChecker.requiredChecker(password);
         setPassword(_password);
@@ -36,6 +39,11 @@ export const usePasswordProcessManager = () => {
         // Check
         if(validationOK) dispatch(actions.middlewares.emitAttemptUserAuthentication({phone: login, password}));
         else helpers.sounds.playWarningSound();
+    }
+
+    // Error reset
+    const errorReset = () => {
+        authenticationRequestFailed && dispatch(actions.cores.storeAttemptUserAuthenticationRequestReset());
     }
 
    return {login, authenticationRequestProcessing, handlePasswordInput, handleAuthentication}

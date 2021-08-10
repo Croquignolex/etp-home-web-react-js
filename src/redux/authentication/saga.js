@@ -10,16 +10,16 @@ export function* emitAttemptUserAuthentication() {
         try {
             const {login, password} = payload;
             // Fire event for request init
-            yield put(actions.requests.storeAttemptUserAuthenticationRequestInit());
+            yield put(actions.cores.storeAttemptUserAuthenticationRequestInit());
             // API call
             const apiResponse = yield call(helpers.xhr.apiPostRequest, constants.urls.AUTHENTICATION, {phone: login, password});
             const {message, data} = apiResponse;
             const {role, token} = data;
             // Fire event for request succeeded
-            yield put(actions.requests.storeAttemptUserAuthenticationRequestSucceeded({role, token, message}));
+            yield put(actions.cores.storeAttemptUserAuthenticationRequestSucceeded({role, token, message}));
         } catch (message) {
             // Fire event for request failed
-            yield put(actions.requests.storeAttemptUserAuthenticationRequestFailed({message}));
+            yield put(actions.cores.storeAttemptUserAuthenticationRequestFailed({message}));
         }
     });
 }
