@@ -37,7 +37,7 @@ export const usePasswordProcessManager = () => {
         setPassword(_password);
         const validationOK = _password.isValid;
         // Check
-        if(validationOK) dispatch(actions.middlewares.emitAttemptUserAuthentication({phone: login, password}));
+        if(validationOK) dispatch(actions.middlewares.emitAttemptUserAuthentication({login, password: _password.data}));
         else helpers.sounds.playWarningSound();
     }
 
