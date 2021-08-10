@@ -1,4 +1,5 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import {NotificationManager} from "react-notifications";
 import {shallowEqual, useDispatch, useSelector} from "react-redux";
 
 import helpers from "../../helpers";
@@ -18,6 +19,17 @@ export const usePasswordProcessManager = () => {
 
     const authenticationRequestFailed = helpers.requests.requestFailed(authenticationRequest);
     const authenticationRequestProcessing = helpers.requests.requestLoading(authenticationRequest);
+    const authenticationRequestSucceeded = helpers.requests.requestSucceeded(authenticationRequest);
+
+    // Local effects
+    useEffect(() => {
+        if(authenticationRequestSucceeded) {
+            NotificationManager.success(authenticationRequest.message);
+            helpers.sounds.playInfoSound();
+        }
+        // eslint-disable-next-line
+    }, [authenticationRequestSucceeded]);
+
 
     // Handle password input
     const handlePasswordInput = (data) => {

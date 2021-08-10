@@ -39,7 +39,7 @@ const reduce = (state = initialState, action) => {
         case actions.cores.STORE_ATTEMPT_USER_AUTHENTICATION_REQUEST_RESET:
             nextState = {
                 ...state,
-                requests: initialState
+                requests: initialState.requests
             };
             return nextState || state;
 

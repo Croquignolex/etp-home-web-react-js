@@ -7,6 +7,7 @@ import {store} from "./redux/store";
 import * as serviceWorker from './serviceWorker';
 
 import './assets/scss/master.scss';
+import 'react-notifications/lib/notifications.css';
 
 ReactDOM.render(
     // Connect global store to components toward the router

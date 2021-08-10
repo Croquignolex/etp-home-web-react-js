@@ -1,9 +1,10 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 import helpers from "../../helpers";
 import constants from "../../constants";
 import {useDispatch, useSelector} from "react-redux";
 import actions from "../../redux/identification/actions";
+import {NotificationManager} from "react-notifications";
 
 export const useLoginProcessManager = () => {
     // Local state
