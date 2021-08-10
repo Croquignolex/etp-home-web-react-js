@@ -14,7 +14,7 @@ export default {
                 .then(res => {
                     const apiResponse = res.data;
                     apiResponse.status
-                        ? resolve(apiResponse.data)
+                        ? resolve(apiResponse)
                         : reject(apiResponse.message);
                 })
                 .catch(e => {

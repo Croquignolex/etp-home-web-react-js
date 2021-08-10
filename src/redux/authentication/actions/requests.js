@@ -25,7 +25,7 @@ export default {
     }),
     // Set reset data into store
     storeAttemptUserAuthenticationRequestReset: () => ({
-        type: STORE_ATTEMPT_USER_AUTHENTICATION_REQUEST_SUCCEEDED
+        type: STORE_ATTEMPT_USER_AUTHENTICATION_REQUEST_RESET
     }),
 }
 
