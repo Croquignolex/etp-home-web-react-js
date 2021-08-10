@@ -60,8 +60,7 @@ export const usePasswordProcessManager = () => {
         setPassword(_password);
         const validationOK = _password.isValid;
         // Check
-        if(validationOK) dispatch(actions.middlewares.emitAttemptUserAuthentication({login, password: _password.data}));
-        else helpers.sounds.playWarningSound();
+        validationOK && dispatch(actions.middlewares.emitAttemptUserAuthentication({login, password: _password.data}));
     }
 
     // Error reset
@@ -74,5 +73,5 @@ export const usePasswordProcessManager = () => {
         window && window.location.replace(`${url}?token=${token}`);
     }
 
-   return {login, authenticationRequestProcessing, handlePasswordInput, handleAuthentication}
+   return {login, password, authenticationRequestProcessing, handlePasswordInput, handleAuthentication}
 }
