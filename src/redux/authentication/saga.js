@@ -13,11 +13,10 @@ export function* emitAttemptUserAuthentication() {
             yield put(actions.requests.storeAttemptUserAuthenticationRequestInit());
             // API call
             const apiResponse = yield call(helpers.xhr.apiPostRequest, constants.urls.AUTHENTICATION, {phone: login, password});
-            const {role, token, message} = apiResponse;
-            // Save data into redux
-            yield put(actions.cores.storeSetRoleAndTokenData({role, token}));
+            const {message, data} = apiResponse;
+            const {role, token} = data;
             // Fire event for request succeeded
-            yield put(actions.requests.storeAttemptUserAuthenticationRequestSucceeded({message}));
+            yield put(actions.requests.storeAttemptUserAuthenticationRequestSucceeded({role, token, message}));
         } catch (message) {
             // Fire event for request failed
             yield put(actions.requests.storeAttemptUserAuthenticationRequestFailed({message}));
