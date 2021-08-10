@@ -13,21 +13,21 @@ const reduce = (state = initialState, action) => {
     switch (action.type) {
 
         // Resolve event to set authentication init request store data
-        case actions.requests.STORE_ATTEMPT_USER_AUTHENTICATION_REQUEST_INIT:
+        case actions.cores.STORE_ATTEMPT_USER_AUTHENTICATION_REQUEST_INIT:
             nextState = {
                 ...state,
                 requests: helpers.requests.requestInitValue()
             };
             return nextState || state;
         // Resolve event to set authentication failed request store data
-        case actions.requests.STORE_ATTEMPT_USER_AUTHENTICATION_REQUEST_FAILED:
+        case actions.cores.STORE_ATTEMPT_USER_AUTHENTICATION_REQUEST_FAILED:
             nextState = {
                 ...state,
                 requests: helpers.requests.requestFailedValue(action.payload.message)
             };
             return nextState || state;
         // Resolve event to set authentication failed request store data
-        case actions.requests.STORE_ATTEMPT_USER_AUTHENTICATION_REQUEST_SUCCEEDED:
+        case actions.cores.STORE_ATTEMPT_USER_AUTHENTICATION_REQUEST_SUCCEEDED:
             nextState = {
                 ...state,
                 role: action.payload.role,
@@ -36,7 +36,7 @@ const reduce = (state = initialState, action) => {
             };
             return nextState || state;
         // Resolve event to set authentication reset request store data
-        case actions.requests.STORE_ATTEMPT_USER_AUTHENTICATION_REQUEST_RESET:
+        case actions.cores.STORE_ATTEMPT_USER_AUTHENTICATION_REQUEST_RESET:
             nextState = {
                 ...state,
                 requests: initialState

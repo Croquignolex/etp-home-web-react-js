@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 
 import helpers from "../../helpers";
 import constants from "../../constants";
@@ -16,9 +16,9 @@ export const useLoginProcessManager = () => {
     // Handle login input
     const handleLoginInput = (data) => {
         // Reset error data
-        dispatch(actions.requests.storeAttemptUserIdentificationRequestReset());
+        dispatch(actions.cores.storeAttemptUserIdentificationRequestReset());
         // Set password data
-        setPhone({...phone, data});
+        setPhone({...phone, data}); console.log(data.length);
         // Fire when user phone reached 9 characters
         (data.length === 9) && dispatch(actions.middlewares.emitAttemptUserIdentification({login: data}));
     }

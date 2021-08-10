@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {shallowEqual, useDispatch, useSelector} from "react-redux";
 
 import helpers from "../../helpers";
@@ -19,7 +19,7 @@ export const usePasswordProcessManager = () => {
     // Handle password input
     const handlePasswordInput = (data) => {
         // Reset error data
-        dispatch(actions.requests.storeAttemptUserAuthenticationRequestReset());
+        dispatch(actions.cores.storeAttemptUserAuthenticationRequestReset());
         // Set password data
         setPassword({...password, data});
     }
@@ -28,7 +28,7 @@ export const usePasswordProcessManager = () => {
     const handleAuthentication = (e) => {
         e.preventDefault();
         // Reset error data
-        dispatch(actions.requests.storeAttemptUserAuthenticationRequestReset());
+        dispatch(actions.cores.storeAttemptUserAuthenticationRequestReset());
         // Form input checker
         const _password = helpers.formChecker.requiredChecker(password);
         setPassword(_password);
