@@ -11,7 +11,7 @@ const ErrorAlert = ({request}) => {
     canShow && helpers.sounds.playErrorSound();
 
     return (
-        canShow && <Alert variant="danger" className='text-center mb-2'>{canShow.message}</Alert>
+        canShow && <Alert variant="danger" className='text-center mb-2'>{request.message}</Alert>
     );
 }
 
