@@ -12,7 +12,7 @@ export function* emitAttemptUserIdentification() {
             // Fire event for request init
             yield put(actions.cores.storeAttemptUserIdentificationRequestInit());
             // API call
-            const apiResponse = yield call(helpers.xhr.apiPostRequest, constants.urls.IDENTIFICATION, {phone: login});
+            const apiResponse = yield call(helpers.xhr.apiPostRequest, constants.urls.API.IDENTIFICATION, {phone: login});
             const {message} = apiResponse;
             // Fire event for request succeeded
             yield put(actions.cores.storeAttemptUserIdentificationRequestSucceeded({login, message}));

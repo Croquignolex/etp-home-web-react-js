@@ -14,8 +14,9 @@ export default {
         ACCOUNTANT: process.env.REACT_APP_ACCOUNTANT_APP_URL,
         SUPERVISOR: process.env.REACT_APP_SUPERVISOR_APP_URL,
     },
-    // Identification
-    IDENTIFICATION: `${API_BASE_URL}/identification`,
-    // Authentication
-    AUTHENTICATION: `${API_BASE_URL}/login`
+    // API url call
+    API: {
+        IDENTIFICATION: `${API_BASE_URL}/identification`,
+        AUTHENTICATION: `${API_BASE_URL}/login`
+    }
 };
