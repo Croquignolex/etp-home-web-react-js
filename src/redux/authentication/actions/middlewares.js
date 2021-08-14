@@ -8,5 +8,5 @@ export default {
         payload: {login, password},
         type: EMIT_ATTEMPT_USER_AUTHENTICATION
     })
-}
+};
 

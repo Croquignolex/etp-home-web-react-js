@@ -1,5 +1,11 @@
 import React  from 'react';
 
-const PageLoader = () => <div className="lds-ripple"><div/><div/></div>;
+import './assets/scss/loader.scss';
+
+const PageLoader = () => {
+    return (
+        <div className="lds-ripple"><div/><div/></div>
+    );
+};
 
 export default React.memo(PageLoader);

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Alert} from "react-bootstrap";
 
-import helpers from "../helpers"
+import helpers from "../helpers";
 
 const ErrorAlert = ({request}) => {
     const canShow = helpers.requests.requestFailed(request);
@@ -13,7 +13,7 @@ const ErrorAlert = ({request}) => {
     return (
         canShow && <Alert variant="danger" className='text-center mb-2'>{request.message}</Alert>
     );
-}
+};
 
 // Prop types to ensure destroyed props data type
 ErrorAlert.propTypes = {

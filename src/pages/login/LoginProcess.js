@@ -18,7 +18,7 @@ const LoginProcessComponent = () => {
             />
             {identificationRequestProcessing && <img width={70} alt='loading...' src={require('../../assets/images/spinner-dark.svg')} />}
         </>
-    )
-}
+    );
+};
 
 export default React.memo(LoginProcessComponent);

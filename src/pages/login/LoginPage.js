@@ -31,10 +31,10 @@ const LoginPage = () => {
                                     </>
                                 )
                                 : (
-                                    <div>
+                                    <>
                                         <DomTitle title={"Identification - MMAC"} />
                                         <LoginProcess />
-                                    </div>
+                                    </>
                                 )
                             }
                         </div>

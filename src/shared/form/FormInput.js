@@ -31,10 +31,8 @@ const FormInput = ({input, inputIcon, inputType, inputPlaceholder, inputEnable, 
             </div>
             {!isValid && <small className="text-danger">{errorMessage}</small>}
         </div>
-
-
-    )
-}
+    );
+};
 
 // Prop types to ensure destroyed props data type
 FormInput.propTypes = {

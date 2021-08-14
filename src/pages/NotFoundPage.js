@@ -18,7 +18,7 @@ const NotFoundPage = () => {
                 <Link to='/'>Retour</Link>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default React.memo(NotFoundPage)

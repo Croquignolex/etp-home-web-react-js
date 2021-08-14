@@ -21,8 +21,8 @@ const FormButton = ({processing}) => {
                 )
             }
         </div>
-    )
-}
+    );
+};
 
 // Prop types to ensure destroyed props data type
 FormButton.propTypes = {

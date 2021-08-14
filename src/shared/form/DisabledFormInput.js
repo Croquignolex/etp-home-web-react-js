@@ -12,8 +12,8 @@ const DisabledFormInput = ({val}) => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 // Prop types to ensure destroyed props data type
 DisabledFormInput.propTypes = {

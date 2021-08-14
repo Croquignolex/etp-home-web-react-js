@@ -3,16 +3,14 @@ import {NotificationContainer} from "react-notifications";
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
 import constants from './constants';
-
-import './assets/scss/loader.scss';
-import PageLoaderComponent from "./shared/PageLoader";
+import PageLoader from "./shared/PageLoader";
 
 // Component
 const AppRoutes = () => {
     return (
         <Router>
             <NotificationContainer />
-            <Suspense fallback={<PageLoaderComponent />}>
+            <Suspense fallback={<PageLoader />}>
                 <Switch>
                     <Route exact path="/" component={constants.lazyLoadings.LOGIN_PAGE} />
                     <Route component={constants.lazyLoadings.NOT_FOUND_PAGE} />
