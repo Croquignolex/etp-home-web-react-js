@@ -2,15 +2,10 @@
   "name": "mmac",
   "title": "MMAC",
   "description": "MMAC",
-  "keywords": [
-    "etp",
-    "mmac"
-  ],
+  "keywords": ["etp", "mmac"],
   "license": "MIT",
-  "author": "Honowa",
-  "contributors": [
-    "Alex NGOMBOL"
-  ],
+  "author": "Croquignolex",
+  "contributors": ["Alex NGOMBOL"],
   "repository": {
     "type": "git",
     "url": "https://github.com/Croquignolex/etp-home-web-react-js.git"
