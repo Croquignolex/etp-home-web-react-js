@@ -1,6 +1,6 @@
 import React  from 'react';
 
-import './assets/scss/loader.scss';
+import '../assets/scss/loader.scss';
 
 const PageLoader = () => {
     return (
